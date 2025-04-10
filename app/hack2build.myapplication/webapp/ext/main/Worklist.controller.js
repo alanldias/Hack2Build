@@ -6,19 +6,29 @@ sap.ui.define(
     function(PageController,JSONModel) {
         'use strict';
 
-        return PageController.extend('hack2build.myapplication.ext.main.Main', {
+        return PageController.extend('hack2build.myapplication.ext.main.Worklist', {
             /**
              * Called when a controller is instantiated and its View controls (if available) are already created.
              * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
              * @memberOf hack2build.myapplication.ext.main.Main
              */
              onInit: function () {
-                 PageController.prototype.onInit.apply(this, arguments); // needs to be called to properly initialize the page controller
-                 this.getView().bindElement({
-                    path: "/Vehicle(ID='52ec607c-8d9d-4ae2-8a00-fdd1dbebf31d',IsActiveEntity=true)", // ID ou chave correta da entidade
-                    model: undefined // usa o modelo padrão injetado pelo framework
+       
+             },
+
+             onVehiclePress: function (oEvent) {
+                const oItem = oEvent.getParameter("listItem");
+                const sID = oItem.getBindingContext().getProperty("ID");
+              
+                if (!sID) {
+                  console.error("❌ ID do veículo não encontrado.");
+                  return;
+                }
+              
+                sap.ui.core.UIComponent.getRouterFor(this).navTo("vehicleDetail", {
+                  ID: sID
                 });
-             }
+              }
              //,
 
             /**

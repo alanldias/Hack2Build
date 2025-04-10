@@ -97,25 +97,26 @@
       "config": {},
       "routes": [
         {
-          "name": "WeighingMain",
-          "pattern": ":?query:",
-          "target": [
-            "WeighingMain"
-          ]
+          "pattern": "",
+          "name": "worklist",
+          "target": "worklist"
+        },
+        {
+          "pattern": "vehicle/{ID}",
+          "name": "vehicleDetail",
+          "target": "vehicleDetail"
         }
       ],
       "targets": {
-        "WeighingMain": {
-          "type": "Component",
-          "id": "WeighingMain",
-          "name": "sap.fe.core.fpm",
-          "options": {
-            "settings": {
-              "navigation": {},
-              "contextPath": "/Weighing",
-              "viewName": "hack2build.myapplication.ext.main.Main"
-            }
-          }
+        "worklist": {
+          "viewName": "hack2build.myapplication.ext.main.Worklist",
+          "viewId": "worklist",
+          "viewLevel": 1
+        },
+        "vehicleDetail": {
+          "viewName": "hack2build.myapplication.ext.main.VehicleDetail",
+          "viewId": "vehicleDetail",
+          "viewLevel": 2
         }
       }
     }

@@ -1,9 +1,9 @@
 namespace Hack2Build;
 using { cuid } from '@sap/cds/common';
 
-@assert.unique: { licensePlate: [licensePlate] }
+
 entity Vehicle : cuid {
-  licensePlate: String(20) @mandatory;
+  licensePlate: String(20);
   driverName: String(100);
   company: String(100);
 }

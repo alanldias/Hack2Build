@@ -1,0 +1,38 @@
+<mvc:View
+  xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+  controllerName="hack2build.myapplication.ext.main.VehicleDetail">
+
+  <Page id="pageDetail"
+    title="Detalhes do Veículo"
+    showNavButton="true"
+    navButtonPress=".onNavBack">
+
+    <content>
+    <ObjectHeader id="ObjectHeader" title="{i18n>weight}" backgroundDesign="Solid" numberUnit="CurrencyCode">
+      <attributes>
+        <ObjectAttribute id="ObjectAttribute" title="LicencePlate" text="{licensePlate}"/>
+        <ObjectAttribute id="ObjectAttribute1" title="Driver" text="{driverName}"/>
+      </attributes>
+      <statuses>
+        <ObjectStatus id="ObjectStatus" title="Status" text="In Stock" state="Success"/>
+      </statuses>
+    </ObjectHeader>
+    <IconTabBar id="iconTabFilter1" expanded="{device>/isNoPhone}" class="sapUiSmallMarginBottom sapUiResponsiveContentPadding">
+      <items>
+        <IconTabFilter id="iconTabItemFilter1" key="info" text="Info">
+          <f:SimpleForm id="simpleFormId1" layout="ResponsiveGridLayout">
+            <Label id="LabelFormid1" text="Label"/>
+            <Text id="TextFormid1" text="Value"/>
+          </f:SimpleForm>
+        </IconTabFilter>
+        <IconTabFilter id="iconTabItemFilter2" key="attachments" text="Attachments">
+          <List id="ListID" headerText="A List" showSeparators="Inner"> </List>
+        </IconTabFilter>
+        <IconTabFilter id="iconTabItemFilter3" key="notes" text="Notes">
+          <FeedInput id="fieldInputId"/>
+        </IconTabFilter>
+      </items>
+    </IconTabBar>
+    </content>
+  </Page>
+</mvc:View>

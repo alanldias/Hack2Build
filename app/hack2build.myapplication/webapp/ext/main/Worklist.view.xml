@@ -5,7 +5,7 @@
 	controllerName="hack2build.myapplication.ext.main.Worklist">
 	<Page
 		id="idPage"		
-		title="{i18n>VehicleTitle}"
+		title="{i18n>weighingTitle}"
 		class= "sapUiResponsivePadding--header" >
 		
 			
@@ -14,15 +14,23 @@
       id="vehicleList"
       mode="SingleSelectMaster"
       items="{
-        path: '/Vehicle'
+        path: '/Weighing'
       }"
-      itemPress=".onVehiclePress">
+      itemPress=".onWeighingPress">
 		<StandardListItem id="vehicleListItem"
-		title="{licensePlate}"
-		description="{driverName}"
+		title="{weighingID}"
+		description="{vehicleLicensePlate}"
 		type="Active"
-		press=".onVehiclePress" />
+		 />
     </List>
+	 <HBox id="HboxButton" class="sapUiTinyMarginBegin">
+              <Button
+                id="btnNewWeighing"
+                text="Nova Pesagem"
+                type="Emphasized"
+                press=".onNewWeighing" />
+             
+            </HBox>
 
   </Page>
 		

@@ -3,33 +3,171 @@
   controllerName="hack2build.myapplication.ext.main.VehicleDetail">
 
   <Page id="pageDetail"
-    title="Detalhes do Veículo"
+    title="Detalhes da Pesagem"
     showNavButton="true"
     navButtonPress=".onNavBack">
 
     <content>
-    <ObjectHeader id="ObjectHeader" title="{i18n>weight}" backgroundDesign="Solid" numberUnit="CurrencyCode">
+    <ObjectHeader id="ObjectHeader" title="{i18n>weight}" backgroundDesign="Solid" numberUnit="CurrencyCode" >
       <attributes>
-        <ObjectAttribute id="ObjectAttribute" title="LicencePlate" text="{licensePlate}"/>
-        <ObjectAttribute id="ObjectAttribute1" title="Driver" text="{driverName}"/>
+        <ObjectAttribute id="ObjectAttribute" title="LicencePlate" text="{vehicleView>/vehicle/licensePlate}"/>
+        <ObjectAttribute id="ObjectAttribute1" title="Driver" text="{vehicleView>/vehicle/driverName}"/>
       </attributes>
       <statuses>
-        <ObjectStatus id="ObjectStatus" title="Status" text="In Stock" state="Success"/>
+        <ObjectStatus id="ObjectStatus" title="Status" text="on the scale" state="Success"/>
       </statuses>
     </ObjectHeader>
     <IconTabBar id="iconTabFilter1" expanded="{device>/isNoPhone}" class="sapUiSmallMarginBottom sapUiResponsiveContentPadding">
       <items>
-        <IconTabFilter id="iconTabItemFilter1" key="info" text="Info">
+        <IconTabFilter id="iconTabItemFilter1" key="info" text="Dados do transporte">
           <f:SimpleForm id="simpleFormId1" layout="ResponsiveGridLayout">
-            <Label id="LabelFormid1" text="Label"/>
-            <Text id="TextFormid1" text="Value"/>
+                  
+            <!-- Hidden ID field (necessário para update) -->
+            
+
+            <Label id="labelVehicleAssoc" text="Veículo" />
+            <Input id="inputVehicleAssoc" editable="true" />
+
+            <Label id="labelDiver" text="Motorista" />
+            <Input id="inputDriver" value="{vehicleView>/vehicle/driverName}" editable="true" />
+
+            <Label id="labelCompany" text="Empresa" />
+            <Input id="inputCompany" value="{vehicleView>/vehicle/company}" editable="false" />
+          
+
           </f:SimpleForm>
+            <HBox id="HboxButtons" class="sapUiTinyMarginBegin">
+              <Button
+                id="btnFindVehicle"
+                text="Buscar Dados Veículo"
+                type="Emphasized"
+                press=".onFindVehicle" />              
+            </HBox>
         </IconTabFilter>
-        <IconTabFilter id="iconTabItemFilter2" key="attachments" text="Attachments">
-          <List id="ListID" headerText="A List" showSeparators="Inner"> </List>
+        <IconTabFilter id="iconTabItemFilter2" key="attachments" text="Pesagem">
+            <f:SimpleForm id="simpleFormId2" layout="ResponsiveGridLayout">
+              <Input id="inputWeighingIDHidden" value="{weighingData>/ID}" visible="false" />
+
+              <Label id="labelWeighingID" text="Código da Pesagem" />
+              <Input id="inputWeighingID" value="{weighingData>/weighingID}" editable="true" />
+
+              <!-- <Label id="labelVehicleLicensePlate" text="Placa do Veículo" />
+              <Input id="inputVehicleLicensePlate" value="{weighingData>/vehicleLicensePlate}" editable="true" /> -->
+
+              <Label id="labelTareWeight" text="Peso da Tara (kg)" />
+              <Input id="inputTareWeight" value="{vehicleView>/tareWeight}" type="Number" editable="true" />
+
+              <Label id="labelGrossWeight" text="Peso Bruto (kg)" />
+              <Input id="inputGrossWeight" value="{vehicleView>/grossWeight}" type="Number" editable="false" />
+
+              <Label id="labelNetWeight" text="Peso Líquido (kg)" />
+              <Input id="inputNetWeight" value="{vehicleView>/netWeight}" type="Number" editable="false" />
+              
+            </f:SimpleForm>
+            <HBox id="HboxButtonsSave">
+              <Button
+                id="btnpesar"
+                text="Pesar"
+                type="Emphasized"
+                class="sapUiTinyMarginBegin"
+                press=".onPesar" />
+              <Button
+                id="btnSaveWeighing"
+                text="Salvar"
+                type="Default"
+                class="sapUiTinyMarginBegin"
+                press=".onSaveWeighing" />
+              <Button
+                id="btnCancelWeighing"
+                text="Cancelar"
+                type="Reject"
+                class="sapUiTinyMarginBegin"
+                press=".onCancelWeighing" />
+            </HBox>
+          <!-- <List id="ListID" headerText="A List" showSeparators="Inner"> </List> -->
         </IconTabFilter>
-        <IconTabFilter id="iconTabItemFilter3" key="notes" text="Notes">
-          <FeedInput id="fieldInputId"/>
+        <IconTabFilter id="iconTabItemFilter3" key="notes" text="Classificação/Transgenia">
+        <HBox id="HboxClassificationSave" class="sapUiTinyMarginBegin">
+          <VBox class="sapUiSmallMarginEnd" id="VBoxClassification">
+            <f:SimpleForm id="simpleFormId3" layout="ResponsiveGridLayout">
+              <f:toolbar>
+                <Toolbar id="TB1">
+                  <Title id="Title1" text="Claassification"/>
+                  <ToolbarSpacer id="ToolbarSpacer1" />
+                  <Button id="btnSalvarClassification" icon="sap-icon://save" press=".onSaveClassification"/>  
+                              
+                </Toolbar>
+              </f:toolbar>
+                <Input id="inputclassIDHidden" value="{weighingData>/ID}" visible="false" />
+
+                <Label id="labelUmidade" text="Umidade" />
+                <Input id="inputUmidade" value="{Classification>/humdity}" editable="true" />
+                <Label id="labelResultadoUmidade" text="Resultado Umidade" />
+                <Input id="inputResultadoUmidade" value="{Classification>/resultadoUmidade}" editable="true" /> 
+                <Label id="labelDescontoUmidade" text="Desconto Umidade" />
+                <Input id="inputDescontoUmidade" value="{Classification>/descontoUmidade}" editable="true" />
+                
+
+                <Label id="labelimpureza" text="Impureza" />
+                <Input id="inputimpureza" value="{Classification>/impurity}" editable="true" />
+                <Label id="labelResultadoImpureza" text="Resultado Impureza" />
+                <Input id="inputResultadoImpureza" value="{Classification>/resultadoImpureza}" editable="true" />
+                <Label id="labelDescontoImpureza" text="Desconto Impureza" />
+                <Input id="inputDescontoImpureza" value="{Classification>/descontoImpureza}" editable="true" />
+
+                <Label id="labelAvariados" text="Avariados" />
+                <Input id="inputAvariados" value="{Classification>/damaged}" editable="true" />
+                <Label id="labelResultadoAvariado" text="Resultado Avariado" />
+                <Input id="inputResultadoAvariado" value="{Classification>/resultadoAvariado}" editable="true" />
+                <Label id="labelDescontoAvariado" text="Desconto Avariado" />
+                <Input id="inputDescontoAvariado" value="{Classification>/descontoAvariado}" editable="true" />
+
+
+                <Label id="labelEsverdeados" text="Esverdeados" />
+                <Input id="inputEsverdeados" value="{Classification>/Greenish}" editable="true" />
+                <Label id="labelResultadoEsverdeado" text="Resultado Esverdeado" />
+                <Input id="inputResultadoEsverdeado" value="{Classification>/resultadoEsverdeado}" editable="true" />             
+                <Label id="labelDescontoEsverdeado" text="Desconto Esverdeado" />
+                <Input id="inputDescontoEsverdeado" value="{Classification>/descontoEsverdeado}" editable="true" />
+
+              </f:SimpleForm>
+              </VBox>
+              <VBox class="sapUiTinyMarginEnd" id="VBoxTransgenia">
+                <f:SimpleForm id="simpleFormId4" layout="ResponsiveGridLayout">
+                <Toolbar id="TB2">
+                <Title id="Title2" text="Transgenia"/>
+                <ToolbarSpacer id="ToolbarSpacer2" />
+                <Button id="btnSalvarTransgenia" icon="sap-icon://save" press=".onSaveTransgenia"/>                              
+              </Toolbar>
+              <Label id="labelDeclarado" text="Declarado" />
+              <CheckBox id="checkboxDeclarado" selected="{Transgenia>/declarado}" />
+
+              <Label id="labelParticipante" text="Participante" />
+              <CheckBox id="checkboxParticipante" selected="{Transgenia>/participante}" />
+
+              <Label id="labelRREConvenciona" text="RR e Convenciona" />
+              <CheckBox id="checkboxRREConvenciona" selected="{Transgenia>/rrConvenciona}" />
+
+              <Label id="labelTestadaNegativa" text="Testada Negativa" />
+              <CheckBox id="checkboxTestadaNegativa" selected="{Transgenia>/testadaNegativa}" />
+
+              <Label id="labelTestadaPositiva" text="Testada Positiva" />
+              <CheckBox id="checkboxTestadaPositiva" selected="{Transgenia>/testadaPositiva}" />              
+               </f:SimpleForm>
+              
+              </VBox>
+          </HBox>
+            <HBox id="HboxTransgenia" class="sapUiTinyMarginBegin">
+               <!-- <f:SimpleForm id="simpleFormId4" layout="ResponsiveGridLayout">
+                <Toolbar id="TB2">
+                <Title id="Title2" text="Transgenia"/>
+                <ToolbarSpacer id="ToolbarSpacer2" />
+                <Button id="btnSalvarTransgenia" icon="sap-icon://save" press=".onSaveTransgenia"/>  
+                            
+              </Toolbar>
+               </f:SimpleForm> -->
+            </HBox>
+          <!-- <FeedInput id="fieldInputId"/> -->
         </IconTabFilter>
       </items>
     </IconTabBar>

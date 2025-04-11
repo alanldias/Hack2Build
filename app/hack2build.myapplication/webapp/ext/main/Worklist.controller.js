@@ -15,20 +15,20 @@ sap.ui.define(
              onInit: function () {
        
              },
+             onNewWeighing: function () {
+              const oRouter = this.getOwnerComponent().getRouter().navTo("weighingCreate");
+              //oRouter.navTo("vehicleDetail");
+             },
 
-             onVehiclePress: function (oEvent) {
-                const oItem = oEvent.getParameter("listItem");
-                const sID = oItem.getBindingContext().getProperty("ID");
-              
-                if (!sID) {
-                  console.error("❌ ID do veículo não encontrado.");
-                  return;
-                }
-              
-                sap.ui.core.UIComponent.getRouterFor(this).navTo("vehicleDetail", {
-                  ID: sID
-                });
-              }
+             onWeighingPress: function (oEvent) {
+              // Obter o contexto da linha
+              const oContext = oEvent.getSource().getBindingContext("weighingModel");
+              const sWeighingID = oContext.getProperty("ID"); // ou "weighingID" se não usar cuid
+            
+              this.getOwnerComponent().getRouter().navTo("vehicleDetail", {
+                ID: sWeighingID
+              });
+            }
              //,
 
             /**

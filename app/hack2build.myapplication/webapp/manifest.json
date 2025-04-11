@@ -85,6 +85,26 @@
           "earlyRequests": true
         }
       },
+      "vehicleModel": {
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "serviceUrl": "/service/hack2Build/"
+        },
+        "dataSource": "mainService"
+      },
+      "weighingModel": {
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "serviceUrl": "/service/hack2Build/"
+        },
+        "dataSource": "mainService"
+      },
       "@i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "uri": "i18n/i18n.properties"
@@ -102,7 +122,12 @@
           "target": "worklist"
         },
         {
-          "pattern": "vehicle/{ID}",
+          "pattern": "weighing",
+          "name": "weighingCreate",
+          "target": "vehicleDetail"
+        },
+        {
+          "pattern": "weighing/{ID}",
           "name": "vehicleDetail",
           "target": "vehicleDetail"
         }

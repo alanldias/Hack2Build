@@ -34,3 +34,32 @@ entity Weighing : cuid {
   scale: Association to Scale;
 }
 
+entity Classification : cuid {
+  weighing : Association to Weighing @assert.unique;
+
+  // Valores principais
+  humidity         : Decimal(5,2);
+  impurity         : Decimal(5,2);
+  damaged          : Decimal(5,2);
+  greenish         : Decimal(5,2);
+
+  // Resultados
+  resultHumidity   : Decimal(5,2);
+  resultImpurity   : Decimal(5,2);
+  resultDamaged    : Decimal(5,2);
+  resultGreenish   : Decimal(5,2);
+
+  // Descontos
+  discountHumidity : Decimal(5,2);
+  discountImpurity : Decimal(5,2);
+  discountDamaged  : Decimal(5,2);
+  discountGreenish : Decimal(5,2);
+
+  // Checkboxes
+  declared          : Boolean;
+  participant       : Boolean;
+  rrConvention      : Boolean;
+  testedNegative    : Boolean;
+  testedPositive    : Boolean;
+}
+

@@ -14,10 +14,22 @@ sap.ui.define([
       const oVehicleViewModel = new JSONModel();
       this.getView().setModel(oVehicleViewModel, "vehicleView");
       const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+
+      oRouter.getRoute("vehicleDetail").attachPatternMatched((oEvent) => {
+        const sID = oEvent.getParameter("arguments").ID;
+    
+        if (sID) {
+          // 👉 Acesso via clique no Worklist com ID
+          this._onMatchedWithID(sID);
+        } else {
+          // 👉 Acesso via botão "Nova Pesagem"
+          this._onMatchedWithoutID();
+        }
+      }, this);
       
 
-      oRouter.getRoute("vehicleDetail").attachPatternMatched(this._onMatchedWithID, this);
-      oRouter.getRoute("weighingCreate").attachPatternMatched(this._onMatchedWithoutID, this);
+      // oRouter.getRoute("vehicleDetail").attachPatternMatched(this._onMatchedWithID, this);
+      // oRouter.getRoute("weighingCreate").attachPatternMatched(this._onMatchedWithoutID, this);      
       
     },
 

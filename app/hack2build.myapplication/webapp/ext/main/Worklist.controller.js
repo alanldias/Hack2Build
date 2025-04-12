@@ -21,13 +21,19 @@ sap.ui.define(
              },
 
              onWeighingPress: function (oEvent) {
-              // Obter o contexto da linha
-              const oContext = oEvent.getSource().getBindingContext("weighingModel");
-              const sWeighingID = oContext.getProperty("ID"); // ou "weighingID" se não usar cuid
-            
-              this.getOwnerComponent().getRouter().navTo("vehicleDetail", {
-                ID: sWeighingID
-              });
+                const oItem = oEvent.getParameter("listItem"); // <- AQUI está o item da lista
+                const oContext = oItem.getBindingContext(); // default model, ok
+                const sID = oContext?.getProperty("ID");
+
+                if (!sID) {
+                    sap.m.MessageBox.error("ID da pesagem não encontrado.");
+                    return;
+                }
+
+                // Navega para a tela de detalhes da pesagem
+                this.getOwnerComponent().getRouter().navTo("vehicleDetail", {
+                    ID: sID
+                });
             }
              //,
 

@@ -18,6 +18,7 @@ sap.ui.define([
 
       oRouter.getRoute("vehicleDetail").attachPatternMatched(this._onMatchedWithID, this);
       oRouter.getRoute("weighingCreate").attachPatternMatched(this._onMatchedWithoutID, this);
+      
     },
 
     _onMatchedWithID: function (oEvent) {
@@ -31,6 +32,19 @@ sap.ui.define([
     },
 
     _onMatchedWithoutID: function () {
+      const oVehicleViewModel = new sap.ui.model.json.JSONModel({
+        vehicle: {
+          driverName: "",
+          company: ""
+        },
+        tareWeight: null,
+        grossWeight: null,
+        netWeight: null
+      });
+    
+      this.getView().setModel(oVehicleViewModel, "vehicleView");
+
+
       const oNewWeighing = {
         weighingID: "",
         vehicleLicensePlate: "",
@@ -43,29 +57,187 @@ sap.ui.define([
         scale_ID: null
       };  const oModel = new sap.ui.model.json.JSONModel(oNewWeighing);
       this.getView().setModel(oModel, "weighingData");
+
+      const oClassificationModel = new sap.ui.model.json.JSONModel({
+        humidity: null,
+        resultHumidity: null,
+        discountHumidity: null,
+        impurity: null,
+        resultImpurity: null,
+        discountImpurity: null,
+        damaged: null,
+        resultDamaged: null,
+        discountDamaged: null,
+        greenish: null,
+        resultGreenish: null,
+        discountGreenish: null
+      });
+      
+      this.getView().setModel(oClassificationModel, "Classification");
+
+      const oTransgenicsModel = new sap.ui.model.json.JSONModel({
+        declarado: false,
+        participante: false,
+        rrConvenciona: false,
+        testadaNegativa: false,
+        testadaPositiva: false
+      });
+      
+      this.getView().setModel(oTransgenicsModel, "Transgenics");
+
+      
+      
+    },
+
+    onSaveClassification: function () {
+      const oView = this.getView();
+      const oClassificationData = oView.getModel("Classification")?.getData();
+      const sWeighingID = oView.getModel("weighingData")?.getProperty("/ID");
+      const oModel = oView.getModel("classification"); // Corrigido aqui
+    
+      if (!oModel || !sWeighingID || !oClassificationData) {
+        sap.m.MessageBox.error("Dados obrigatórios ausentes.");
+        return;
+      }
+    
+      const oPayload = {
+        humidity: oClassificationData.humidity,
+        resultHumidity: oClassificationData.resultHumidity,
+        discountHumidity: oClassificationData.discountHumidity,
+    
+        impurity: oClassificationData.impurity,
+        resultImpurity: oClassificationData.resultImpurity,
+        discountImpurity: oClassificationData.discountImpurity,
+    
+        damaged: oClassificationData.damaged,
+        resultDamaged: oClassificationData.resultDamaged,
+        discountDamaged: oClassificationData.discountDamaged,
+    
+        greenish: oClassificationData.greenish,
+        resultGreenish: oClassificationData.resultGreenish,
+        discountGreenish: oClassificationData.discountGreenish,
+    
+        weighing_ID: sWeighingID
+      };
+    
+      const oListBinding = oModel.bindList("/Classification");
+      const oContext = oListBinding.create(oPayload);
+    
+      oContext.created().then(() => {
+        sap.m.MessageToast.show("Classificação salva com sucesso!");
+      }).catch((err) => {
+        console.error("❌ Erro ao salvar classificação:", err);
+        sap.m.MessageBox.error("Erro ao salvar classificação.");
+      });
+    },
+    
+    onSaveTransgenia: function () {
+      const oView = this.getView();
+    
+      const oTransgenicsData = oView.getModel("Transgenics")?.getData();
+      const sWeighingID = oView.getModel("weighingData")?.getProperty("/ID");
+      const oModel = oView.getModel("transgenicsModel");
+    
+      if (!oModel || !sWeighingID || !oTransgenicsData) {
+        sap.m.MessageBox.error("Dados obrigatórios ausentes para salvar transgenia.");
+        return;
+      }
+    
+      // Montar o payload
+      const oPayload = {
+        declared: oTransgenicsData.declarado,
+        participant: oTransgenicsData.participante,
+        rrConvention: oTransgenicsData.rrConvenciona,
+        testedNegative: oTransgenicsData.testadaNegativa,
+        testedPositive: oTransgenicsData.testadaPositiva,
+        weighing_ID: sWeighingID
+      };
+    
+      // Criar entrada via OData V4
+      const oBinding = oModel.bindList("/Transgenics");
+      const oContext = oBinding.create(oPayload);
+    
+      oContext.created().then(() => {
+        sap.m.MessageToast.show("Transgenia salva com sucesso!");
+      }).catch((err) => {
+        console.error("❌ Erro ao salvar transgenia:", err);
+        sap.m.MessageBox.error("Erro ao salvar dados de transgenia.");
+      });
+    },    
+    
+    
+
+    onSaveTransgenics: function () {
+      const oView = this.getView();
+      const oTransgenicsView = oView.getModel("Transgenics");
+      
+      if (!oTransgenicsView) {
+        sap.m.MessageBox.error("Modelos necessários não encontrados.");
+        return;
+      }
+
     },
 
      
     onSaveWeighing: function () {
-      const oWeighingModel = this.getOwnerComponent().getModel("weighingModel");
-      const oWeighingData = this.getView().getModel("weighingData").getData();
-    
-      const bIsNew = !oWeighingData.ID; // se não houver ID, é novo
-    
-      if (bIsNew) {
-        // Criar nova pesagem
-        oWeighingModel.create("/Weighing", oWeighingData, {
-          success: () => sap.m.MessageToast.show("Pesagem criada com sucesso!"),
-          error: () => sap.m.MessageToast.show("Erro ao criar pesagem.")
-        });
-      } else {
-        // Atualizar pesagem existente
-        const sPath = "/Weighing('" + oWeighingData.ID + "')";
-        oWeighingModel.update(sPath, oWeighingData, {
-          success: () => sap.m.MessageToast.show("Pesagem atualizada!"),
-          error: () => sap.m.MessageToast.show("Erro ao atualizar pesagem.")
-        });
+      const oView = this.getView();
+
+      // Modelos usados
+      const oVehicleView = oView.getModel("vehicleView");
+      const oWeighingData = oView.getModel("weighingData");
+      const oWeighingModel = oView.getModel("weighingModel");
+
+      if (!oVehicleView || !oWeighingData || !oWeighingModel) {
+        sap.m.MessageBox.error("Modelos necessários não encontrados.");
+        return;
       }
+    
+      // Obter os dados
+      const vehicleData = oVehicleView.getData();
+      const weighingData = oWeighingData.getData();
+    
+      // Validação básica
+      if (!weighingData.weighingID) {
+        sap.m.MessageToast.show("Informe o código da pesagem.");
+        return;
+      }
+    
+      if (!vehicleData.tareWeight || !vehicleData.grossWeight) {
+        sap.m.MessageToast.show("Preencha os pesos da tara e bruto.");
+        return;
+      }
+    
+      // Calcular líquido se ainda não tiver
+      const netWeight = vehicleData.netWeight || (vehicleData.grossWeight - vehicleData.tareWeight);
+    
+      // Montar payload
+      const payload = {
+        weighingID: weighingData.weighingID,
+        tareWeight: vehicleData.tareWeight,
+        grossWeight: vehicleData.grossWeight,
+        netWeight: netWeight,
+        timestamp: new Date().toISOString(), // ou pegue de outro campo se tiver
+        vehicleLicensePlate: vehicleData.vehicle.licensePlate || "", // opcional se tiver esse campo no modelo
+        vehicle_ID: vehicleData.vehicle.vehicle_ID // opcional: se você já associou o veículo
+      };
+    
+          // Aqui vem a mágica OData V4!
+      const oBinding = oWeighingModel.bindList("/Weighing");
+
+      // Cria e retorna um contexto transiente
+      const oCreateContext = oBinding.create(payload);
+
+      // Espera a resposta
+      oCreateContext.created().then(() => {
+        const oCreatedData = oCreateContext.getObject(); // <- AQUI você acessa o objeto com o ID gerado
+        // Atualiza o modelo local com o novo ID
+        const oUpdatedData = Object.assign({}, weighingData, oCreatedData);
+        oWeighingData.setData(oUpdatedData);
+        sap.m.MessageToast.show("Pesagem salva com sucesso!");
+      }).catch((oError) => {
+        console.error("Erro ao salvar pesagem:", oError);
+        sap.m.MessageBox.error("Erro ao salvar pesagem.");
+      });
     },
     
     onCancelWeighing: function () {

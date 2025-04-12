@@ -44,7 +44,7 @@
                 press=".onFindVehicle" />              
             </HBox>
         </IconTabFilter>
-        <IconTabFilter id="iconTabItemFilter2" key="attachments" text="Pesagem">
+        <IconTabFilter id="iconTabItemFilter2" key="Pesagem" text="Pesagem">
             <f:SimpleForm id="simpleFormId2" layout="ResponsiveGridLayout">
               <Input id="inputWeighingIDHidden" value="{weighingData>/ID}" visible="false" />
 
@@ -98,37 +98,43 @@
                               
                 </Toolbar>
               </f:toolbar>
-                <Input id="inputclassIDHidden" value="{weighingData>/ID}" visible="false" />
+                <Input id="inputClassIDHidden" value="{weighingData>/ID}" visible="false" />
 
-                <Label id="labelUmidade" text="Umidade" />
-                <Input id="inputUmidade" value="{Classification>/humdity}" editable="true" />
-                <Label id="labelResultadoUmidade" text="Resultado Umidade" />
-                <Input id="inputResultadoUmidade" value="{Classification>/resultadoUmidade}" editable="true" /> 
-                <Label id="labelDescontoUmidade" text="Desconto Umidade" />
-                <Input id="inputDescontoUmidade" value="{Classification>/descontoUmidade}" editable="true" />
-                
+                <Label id="labelHumidity" text="Umidade" />
+                <Input id="inputHumidity" value="{Classification>/humidity}" editable="true" />
 
-                <Label id="labelimpureza" text="Impureza" />
-                <Input id="inputimpureza" value="{Classification>/impurity}" editable="true" />
-                <Label id="labelResultadoImpureza" text="Resultado Impureza" />
-                <Input id="inputResultadoImpureza" value="{Classification>/resultadoImpureza}" editable="true" />
-                <Label id="labelDescontoImpureza" text="Desconto Impureza" />
-                <Input id="inputDescontoImpureza" value="{Classification>/descontoImpureza}" editable="true" />
+                <Label id="labelResultHumidity" text="Resultado Umidade" />
+                <Input id="inputResultHumidity" value="{Classification>/resultHumidity}" editable="true" />
 
-                <Label id="labelAvariados" text="Avariados" />
-                <Input id="inputAvariados" value="{Classification>/damaged}" editable="true" />
-                <Label id="labelResultadoAvariado" text="Resultado Avariado" />
-                <Input id="inputResultadoAvariado" value="{Classification>/resultadoAvariado}" editable="true" />
-                <Label id="labelDescontoAvariado" text="Desconto Avariado" />
-                <Input id="inputDescontoAvariado" value="{Classification>/descontoAvariado}" editable="true" />
+                <Label id="labelDiscountHumidity" text="Desconto Umidade" />
+                <Input id="inputDiscountHumidity" value="{Classification>/discountHumidity}" editable="true" />
 
+                <Label id="labelImpurity" text="Impureza" />
+                <Input id="inputImpurity" value="{Classification>/impurity}" editable="true" />
 
-                <Label id="labelEsverdeados" text="Esverdeados" />
-                <Input id="inputEsverdeados" value="{Classification>/Greenish}" editable="true" />
-                <Label id="labelResultadoEsverdeado" text="Resultado Esverdeado" />
-                <Input id="inputResultadoEsverdeado" value="{Classification>/resultadoEsverdeado}" editable="true" />             
-                <Label id="labelDescontoEsverdeado" text="Desconto Esverdeado" />
-                <Input id="inputDescontoEsverdeado" value="{Classification>/descontoEsverdeado}" editable="true" />
+                <Label id="labelResultImpurity" text="Resultado Impureza" />
+                <Input id="inputResultImpurity" value="{Classification>/resultImpurity}" editable="true" />
+
+                <Label id="labelDiscountImpurity" text="Desconto Impureza" />
+                <Input id="inputDiscountImpurity" value="{Classification>/discountImpurity}" editable="true" />
+
+                <Label id="labelDamaged" text="Avariados" />
+                <Input id="inputDamaged" value="{Classification>/damaged}" editable="true" />
+
+                <Label id="labelResultDamaged" text="Resultado Avariado" />
+                <Input id="inputResultDamaged" value="{Classification>/resultDamaged}" editable="true" />
+
+                <Label id="labelDiscountDamaged" text="Desconto Avariado" />
+                <Input id="inputDiscountDamaged" value="{Classification>/discountDamaged}" editable="true" />
+
+                <Label id="labelGreenish" text="Esverdeados" />
+                <Input id="inputGreenish" value="{Classification>/greenish}" editable="true" />
+
+                <Label id="labelResultGreenish" text="Resultado Esverdeado" />
+                <Input id="inputResultGreenish" value="{Classification>/resultGreenish}" editable="true" />
+
+                <Label id="labelDiscountGreenish" text="Desconto Esverdeado" />
+                <Input id="inputDiscountGreenish" value="{Classification>/discountGreenish}" editable="true" />
 
               </f:SimpleForm>
               </VBox>
@@ -140,19 +146,19 @@
                 <Button id="btnSalvarTransgenia" icon="sap-icon://save" press=".onSaveTransgenia"/>                              
               </Toolbar>
               <Label id="labelDeclarado" text="Declarado" />
-              <CheckBox id="checkboxDeclarado" selected="{Transgenia>/declarado}" />
+              <CheckBox id="checkboxDeclarado" selected="{Transgenics>/declarado}" />
 
               <Label id="labelParticipante" text="Participante" />
-              <CheckBox id="checkboxParticipante" selected="{Transgenia>/participante}" />
+              <CheckBox id="checkboxParticipante" selected="{Transgenics>/participante}" />
 
               <Label id="labelRREConvenciona" text="RR e Convenciona" />
-              <CheckBox id="checkboxRREConvenciona" selected="{Transgenia>/rrConvenciona}" />
+              <CheckBox id="checkboxRREConvenciona" selected="{Transgenics>/rrConvenciona}" />
 
               <Label id="labelTestadaNegativa" text="Testada Negativa" />
-              <CheckBox id="checkboxTestadaNegativa" selected="{Transgenia>/testadaNegativa}" />
+              <CheckBox id="checkboxTestadaNegativa" selected="{Transgenics>/testadaNegativa}" />
 
               <Label id="labelTestadaPositiva" text="Testada Positiva" />
-              <CheckBox id="checkboxTestadaPositiva" selected="{Transgenia>/testadaPositiva}" />              
+              <CheckBox id="checkboxTestadaPositiva" selected="{Transgenics>/testadaPositiva}" />              
                </f:SimpleForm>
               
               </VBox>

@@ -21,9 +21,9 @@ entity Scale : cuid {
   currentWeight: Decimal(10,2);
 }
 
-@assert.unique: { weighingID: [weighingID] }
+
 entity Weighing : cuid {
-  weighingID: String(20) @mandatory;
+  weighingID: String(20) ;
   vehicleLicensePlate: String(20);
   tareWeight: Decimal(10,2);
   grossWeight: Decimal(10,2);
@@ -32,6 +32,8 @@ entity Weighing : cuid {
   vehicle: Association to Vehicle;
   product: Association to Product;
   scale: Association to Scale;
+  classification : Association to Classification;
+  transgenics    : Association to Transgenics;
 }
 
 entity Classification : cuid {
@@ -55,11 +57,16 @@ entity Classification : cuid {
   discountDamaged  : Decimal(5,2);
   discountGreenish : Decimal(5,2);
 
-  // Checkboxes
+  
+}
+
+
+entity Transgenics : cuid {
+  weighing : Association to Weighing @assert.unique;
+// Checkboxes
   declared          : Boolean;
   participant       : Boolean;
   rrConvention      : Boolean;
   testedNegative    : Boolean;
   testedPositive    : Boolean;
 }
-

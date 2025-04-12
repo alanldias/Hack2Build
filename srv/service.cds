@@ -14,6 +14,12 @@ service hack2BuildSrv {
   entity Product as projection on my.Product;
   @odata.draft.enabled
   entity Scale as projection on my.Scale;
-  @odata.draft.enabled
+  
   entity Weighing as projection on my.Weighing;
+
+  entity Classification as projection on my.Classification;
+
+  // Define an entity named 'transgenics' as a projection of the 'my.transgenics' entity
+  entity Transgenics as projection on my.Transgenics;
+
 }

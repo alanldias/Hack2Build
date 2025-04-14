@@ -112,6 +112,7 @@
                  <Table id="idContractsTableleft"
 								contextualWidth="Auto"
 								popinLayout="GridSmall"
+								visible="false"
                                 mode="SingleSelect"
 								headerText="Contracts"
 								items="{

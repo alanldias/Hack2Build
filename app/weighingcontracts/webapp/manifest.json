@@ -78,6 +78,8 @@
           "operationMode": "Server",
           "autoExpandSelect": true,
           "earlyRequests": true,
+          "groupId": "$auto", 
+          "updateGroupId": "$auto",
           "serviceUrl": "/service/hack2Build/"
         },
         "dataSource": "mainService"

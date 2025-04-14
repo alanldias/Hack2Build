@@ -12,7 +12,7 @@
     
     <List
       id="vehicleList"
-      mode="SingleSelectMaster"
+      mode="None"
       items="{
         path: '/Weighing'
       }"

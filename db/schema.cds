@@ -30,6 +30,7 @@ entity Weighing : cuid {
   productCode: String(20);
   productName: String(100);
   company: String(100);
+  contractID:UUID;
 
 
   vehicle        : Association to Vehicle;

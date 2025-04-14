@@ -14,7 +14,11 @@ service hack2BuildSrv {
   @odata.draft.enabled
   entity Scale as projection on my.Scale;
   
-  entity Weighing as projection on my.Weighing;
+  entity Weighing as projection on my.Weighing{
+    key ID,
+    *,
+    contractID
+  };
 
   entity Classification as projection on my.Classification;
 
@@ -46,30 +50,45 @@ service hack2BuildSrv {
     timestamp                   as weighingDate,
     vehicleLicensePlate         as vehiclePlate,
     product.productID           as productID,
+    contractID,
+    
+    contract                    ,
     netWeight,
     productCode as material,
     productName as materialName,
     company as supplier
-  }
+  }where contractID is null;
 
 
 
+entity viewWSummary as select from Weighing {
+    ID                          as weighingKeyID,
+    timestamp                   as date,
+    timestamp                   as time,
+    vehicle.licensePlate        as plate,
+    contract.contractNumber     as contract,
+    product.productID           as productCode,
+    product.productName         as productName,
+    vehicle.company             as supplier,
+    netWeight
+}
+where contract.ID is null;
 
 
   
 
-  entity viewWSummary as select from WeighingSummary{
-    weighingKeyID,
-    date,
-    time,
-    plate,
-    contract,
-    productCode,
-    productName,
-    supplier,
-    netWeight
+  // entity viewWSummary as select from WeighingSummary{
+  //   weighingKeyID,
+  //   date,
+  //   time,
+  //   plate,
+  //   contract,
+  //   productCode,
+  //   productName,
+  //   supplier,
+  //   netWeight
 
-  }where contract is null;
+  // }where contract is null;
 
  
   

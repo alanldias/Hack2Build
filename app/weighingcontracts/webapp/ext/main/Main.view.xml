@@ -12,11 +12,12 @@
 
                 <Table id="idWeighingTableleft"
 								contextualWidth="Auto"
+								selectionChange=".onWeighingSelect"
 								popinLayout="GridSmall"
                                 mode="SingleSelect"
 								headerText="Weighings"
 								items="{
-								path: '/viewWSummary'
+								path: '/WeighingDetails'
 							}">
 							<columns>
 								<Column id="idWeighingColumn">
@@ -41,7 +42,7 @@
 								</Column>
 								<Column id="idWeighingColumn5">
 									<header>
-										<Text id="TextCw5" text="ProductName" />
+										<Text id="TextCw5" text="materialName" />
 									</header>
 								</Column>
 								<Column id="idWeighingColumn6">
@@ -59,15 +60,15 @@
 								<ColumnListItem id="idProductColumnItem">
 									<cells>
 										<Label id="Lbl1"
-											text="{date}"/>
+											text="{weighingDate}"/>
 										<Label id="Lbl2"
-											text="{time}" />
+											text="{weighingDate}" />
 										<Label id="Lbl3"
-											text="{plate}" />
+											text="{vehiclePlate}" />
 										<Label id="Lbl4"
-											text="{productCode}" />
+											text="{material}" />
 										<Label id="Lbl5"
-											text="{productName}" />
+											text="{materialName}" />
 										<Label id="Lbl6"
 											text="{supplier}" />
 										<Label id="Lbl7"
@@ -110,10 +111,10 @@
                  <Table id="idContractsTableleft"
 								contextualWidth="Auto"
 								popinLayout="GridSmall"
-                                mode="None"
+                                mode="SingleSelect"
 								headerText="Contracts"
 								items="{
-								path: '/ContractSummaryView',
+								path: '/ContractVehicleListView',
 								 model: 'vwModel'
 							}">
 							<columns>
@@ -122,20 +123,44 @@
 										<Text id="TextContract" text="Contracts" />
 									</header>
 								</Column>
-								<Column id="idContractColumn2">
+								
+								<Column id="idContractColumn3">
 									<header>
-										<Text id="TextContract2" text="Contracts type" />
+										<Text id="TextContract3" text="Product Code" />
 									</header>
 								</Column>
+								<Column id="idContractColumn4">
+									<header>
+										<Text id="TextContract4" text="Product Name" />
+									</header>
+								</Column>
+								<Column id="idContractColumn5">
+									<header>
+										<Text id="TextContract5" text="Supplier" />
+									</header>
+								</Column>
+								<Column id="idContractColumn6">
+									<header>
+										<Text id="TextContract6" text="Contract Amount" />
+									</header>
+								</Column>
+
+
                                 </columns>
 							<items>
 								<ColumnListItem id="idProductColumnItem2">
 									<cells>
 										<Label id="Lblcontract1"
-											text="{vwModel>contract}"/>
+											text="{vwModel>contractNumber}"/>
 										<Label id="Lblcontract2"
-											text="{vwModel>productCode}" />
-                                            </cells>
+											text="{vwModel>material}" />
+										<Label id="Lblcontract3"
+											text="{vwModel>materialName}" />
+										<Label id="Lblcontract4"
+											text="{vwModel>supplier}" />
+										<Label id="Lblcontract5"
+											text="{vwModel>amount}" />
+									</cells>
 								</ColumnListItem>
 							</items>
 						</Table>

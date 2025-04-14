@@ -27,6 +27,10 @@ entity Weighing : cuid {
   grossWeight: Decimal(10,2);
   netWeight: Decimal(10,2);
   timestamp: String(30);
+  productCode: String(20);
+  productName: String(100);
+  company: String(100);
+
 
   vehicle        : Association to Vehicle;
   product        : Association to Product;
@@ -34,6 +38,7 @@ entity Weighing : cuid {
   contract       : Association to ACMContracts;
   classification : Association to Classification;
   transgenics    : Association to Transgenics;
+
 }
 
 entity Classification : cuid {
@@ -67,9 +72,10 @@ entity Transgenics : cuid {
 
 entity ACMContracts : cuid, managed {
   contractNumber : String(10) @mandatory;
-  contractType   : String(4);
-  customer       : String(10);
+  contractType   : String(4); 
+  customer       : String(100);
   material       : String(18);
+  materialName   : String(100);
   plant          : String(4);
   amount         : Decimal(20,2);
 
@@ -87,10 +93,3 @@ entity ACMContractVehicles : cuid {
   contract : Association to ACMContracts;
   vehicle  : Association to Vehicle;
 }
-
-
-
-
-
-
-

@@ -14,23 +14,43 @@ sap.ui.define([
       const oVehicleViewModel = new JSONModel();
       this.getView().setModel(oVehicleViewModel, "vehicleView");
       const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+     //oRouter.getRoute("weighingCreate").attachMatched(this._onRouteMatched, this);
 
-      oRouter.getRoute("vehicleDetail").attachPatternMatched((oEvent) => {
-        const sID = oEvent.getParameter("arguments").ID;
+      // oRouter.getRoute("vehicleDetail").attachPatternMatched((oEvent) => {
+      //   const sID = oEvent.getParameter("arguments").ID;
     
-        if (sID) {
-          // 👉 Acesso via clique no Worklist com ID
-          this._onMatchedWithID(sID);
-        } else {
-          // 👉 Acesso via botão "Nova Pesagem"
-          this._onMatchedWithoutID();
-        }
-      }, this);
+      //   if (sID) {
+      //     // 👉 Acesso via clique no Worklist com ID
+      //     this._onMatchedWithID(sID);
+      //   } else {
+      //     // 👉 Acesso via botão "Nova Pesagem"
+      //     this._onMatchedWithoutID();
+      //   }
+      // }, this);
       
 
       // oRouter.getRoute("vehicleDetail").attachPatternMatched(this._onMatchedWithID, this);
-      // oRouter.getRoute("weighingCreate").attachPatternMatched(this._onMatchedWithoutID, this);      
+       oRouter.getRoute("weighingCreate").attachPatternMatched(this._onMatchedWithoutID, this);      
       
+    },
+
+    _onRouteMatched: async function (oEvent) {
+      // Este método será chamado TODA vez que a rota for usada
+      var sID = oEvent.getParameter("arguments").ID;
+
+      if (sID) {
+            // 👉 Acesso via clique no Worklist com ID
+            this._onMatchedWithID(sID);
+          } else {
+            // 👉 Acesso via botão "Nova Pesagem"
+            this._onMatchedWithoutID();
+          }
+    
+      // // Exemplo: Recarregar dados com base no parâmetro da rota
+      // this.getView().bindElement({
+      //   path: "/MyEntitySet('" + sObjectId + "')",
+      //   model: "myModel"
+      // });
     },
 
     _onMatchedWithID: function (oEvent) {

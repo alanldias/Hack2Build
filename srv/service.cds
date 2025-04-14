@@ -46,11 +46,19 @@ service hack2BuildSrv {
   entity WeighingDetails as select from Weighing {
     ID                          as weighingID,
     timestamp                   as weighingDate,
-    vehicle.licensePlate        as vehiclePlate,
+    vehicleLicensePlate         as vehiclePlate,
     product.productID           as productID,
-    netWeight
-}
+    netWeight,
+    productCode as material,
+    productName as materialName,
+    company as supplier
+  }
 
+
+
+
+
+  
 
   entity viewWSummary as select from WeighingSummary{
     weighingKeyID,
@@ -65,12 +73,13 @@ service hack2BuildSrv {
 
   }where contract is null;
 
-
+ 
   
 
 }
 
 service hack2BuildVW {
+  
     entity ContractProductVehicleView as select from my.ACMContractProducts as cp {
     key cp.ID as ID,
     cp.contract.contractNumber       as contractNumber,
@@ -80,13 +89,28 @@ service hack2BuildVW {
     cp.contract.vehicles[0].vehicle.company      as supplier
   };
 
-  entity ContractVehicleListView as select from my.ACMContractVehicles as cv {
+//   entity WeighingView as select from my.Weighing as w {
+//   key w.ID,
+//   w.weighingID,
+//   w.vehicle.company         as company,
+//   w.contract.contractNumber as contractNumber,
+//   w.product as productID,
+//   w.productName     as productName,
+//   w.netWeight
+// };
+
+  entity ContractVehicleListView as select from my.ACMContracts as cv {
   key cv.ID as ID,
-  cv.contract.contractNumber  as contractNumber,
-  cv.contract.material        as material,
-  cv.vehicle.licensePlate     as vehiclePlate,
-  cv.vehicle.company          as supplier
+  cv.contractNumber  as contractNumber,
+  cv.material        as material,
+  cv.materialName    as materialName,
+  cv.vehicles        as vehiclePlate,
+  cv.customer          as supplier,
+  cv.amount           
+  
 };
+
+
 
 entity ContractSummaryView as select from my.ACMContracts as c {
   key c.ID                              as ID,
@@ -102,3 +126,5 @@ group by
   c.products[0].product.productName,
   c.vehicles[0].vehicle.company, c.amount
 }
+
+

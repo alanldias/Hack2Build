@@ -16,7 +16,7 @@ sap.ui.define(
        
              },
              onNewWeighing: function () {
-              const oRouter = this.getOwnerComponent().getRouter().navTo("weighingCreate");
+               this.getOwnerComponent().getRouter().navTo("weighingCreate");
               //oRouter.navTo("vehicleDetail");
              },
 
@@ -31,6 +31,10 @@ sap.ui.define(
                 }
 
                 // Navega para a tela de detalhes da pesagem
+                // var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                //     oRouter.navTo("vehicleDetail", { ID: sID });
+
+
                 this.getOwnerComponent().getRouter().navTo("vehicleDetail", {
                     ID: sID
                 });

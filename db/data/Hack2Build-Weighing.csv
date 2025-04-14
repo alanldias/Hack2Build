@@ -1,4 +1,8 @@
-weighingID,vehicleLicensePlate,tareWeight,grossWeight,netWeight,timestamp,vehicle_ID,product_ID,scale_ID
-W001,ABC1234,5000.0,7500.0,2500.0,2025-04-10T08:30:00Z,ABC1234,P001,S001
-W002,XYZ5678,5200.0,8000.0,2800.0,2025-04-10T09:00:00Z,XYZ5678,P002,S002
+ID,weighingID,vehicleLicensePlate,tareWeight,grossWeight,netWeight,timestamp,productCode,productName,company,contract_ID
+aaaaaaaa-1111-1111-1111-aaaaaaaaaaaa,WG-001,ABC1234,5000,12000,7000,2024-04-10T08:00:00Z,SOJA001,Soja,AgroCorp,11111111-aaaa-aaaa-aaaa-111111111111
+bbbbbbbb-2222-2222-2222-bbbbbbbbbbbb,WG-002,DEF5678,5200,11000,5800,2024-04-11T09:30:00Z,SOJA001,Soja,AgroCorp,22222222-bbbb-bbbb-bbbb-222222222222
+cccccccc-3333-3333-3333-cccccccccccc,WG-003,GHI9012,4800,10000,5200,2024-04-12T10:15:00Z,MILHO002,Milho,BioAgro,33333333-cccc-cccc-cccc-333333333333
+cccccccc-3333-3333-3333-dddddddddddd,WG-004,XYZ5678,4800,10000,5200,2024-04-12T10:15:00Z,MILHO002,Milho,BioAgro
+cccccccc-3333-3333-3333-eeeeeeeeeeee,WG-005,ABC1234,4800,10000,5200,2024-04-12T10:15:00Z,MILHO002,Milho,AgroCorp
+cccccccc-3333-3333-3333-ffffffffffff,WG-006,XYZ5678,4800,10000,5200,2024-04-12T10:15:00Z,MILHO002,Milho,BioAgro
 

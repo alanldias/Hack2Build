@@ -1,7 +1,6 @@
 using { Hack2Build as my } from '../db/schema.cds';
 
 @path: '/service/hack2Build'
-@requires: 'authenticated-user'
 service hack2BuildSrv {
 
   entity Vehicle as projection on my.Vehicle {
@@ -29,7 +28,6 @@ service hack2BuildSrv {
 
   
  
-  
 
   entity WeighingSummary as select from Weighing {
     ID                          as weighingKeyID,
@@ -79,15 +77,18 @@ service hack2BuildSrv {
 }
 
 service hack2BuildVW {
+
+    
   
-    entity ContractProductVehicleView as select from my.ACMContractProducts as cp {
-    key cp.ID as ID,
-    cp.contract.contractNumber       as contractNumber,
-    cp.contract.material             as material,
-    cp.product.productName           as productName,
-    cp.contract.vehicles[0].vehicle.licensePlate as vehiclePlate,
-    cp.contract.vehicles[0].vehicle.company      as supplier
-  };
+  
+  //   entity ContractProductVehicleView as select from my.ACMContractProducts as cp {
+  //   key cp.ID as ID,
+  //   cp.contract.contractNumber       as contractNumber,
+  //   cp.contract.material             as material,
+  //   cp.product.productName           as productName,
+  //   cp.contract.vehicles[0].vehicle.licensePlate as vehiclePlate,
+  //   cp.contract.vehicles[0].vehicle.company      as supplier
+  // };
 
 //   entity WeighingView as select from my.Weighing as w {
 //   key w.ID,
@@ -112,19 +113,19 @@ service hack2BuildVW {
 
 
 
-entity ContractSummaryView as select from my.ACMContracts as c {
-  key c.ID                              as ID,
-  c.contractNumber                      as contract,
-  c.material                            as productCode,
-  c.products[0].product.productName     as productName,
-  c.vehicles[0].vehicle.company         as supplier,
-  c.amount                              as contractAmount
-  //c.amount - sum(c.weighings.netWeight) as pendingAmount
-}
-group by
-  c.ID, c.contractNumber, c.material,
-  c.products[0].product.productName,
-  c.vehicles[0].vehicle.company, c.amount
+// entity ContractSummaryView as select from my.ACMContracts as c {
+//   key c.ID                              as ID,
+//   c.contractNumber                      as contract,
+//   c.material                            as productCode,
+//   c.products[0].product.productName     as productName,
+//   c.vehicles[0].vehicle.company         as supplier,
+//   c.amount                              as contractAmount
+//   //c.amount - sum(c.weighings.netWeight) as pendingAmount
+// }
+// group by
+//   c.ID, c.contractNumber, c.material,
+//   c.products[0].product.productName,
+//   c.vehicles[0].vehicle.company, c.amount
 }
 
 

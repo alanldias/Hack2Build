@@ -9,20 +9,24 @@
     "@cap-js/hana": "^1",
     "@sap-cloud-sdk/http-client": "^4.0.2",
     "@sap-cloud-sdk/util": "^4.0.2",
-    "@sap/cds": "^8",
     "@sap/low-code-event-handler": "^1.2.5",
-    "@sap/mdk-tools": "^1.13.0",
-    "@sap/xsenv": ">=3.3.2 <3.3.3",
+    "@sap/mdk-tools": "^1.0.2",
+    "@sap/xsenv": "^3.4.0",
     "@sap/xssec": "^4.5.0",
     "better-sqlite3": "^11.9.1",
+    "cds-plugin-ui5": "^0.12.0",
     "express": "^4",
     "hdb": "^0.19.12",
-    "passport": "^0.7.0"
+    "mbt": "^1.2.34",
+    "passport": "^0.7.0",
+    "@sap/cds": "^8.9.1"
   },
   "devDependencies": {
     "@cap-js/cds-types": "^0.9.0",
-    "@cap-js/sqlite": "^1",
-    "@sap/dev-cap-tools": "^1.31.0"
+    "@cap-js/sqlite": "^1",    
+    "@sap/cds-dk": "^8.9.1",
+    "@sap/dev-cap-tools": "^1.31.0",
+    "@ui5/cli": "^4.0.14"
   },
   "scripts": {
     "start": "cds-serve",
@@ -31,23 +35,31 @@
     "cds-watch": "cds watch --open",
     "watch-hack2build.myapplication": "cds watch --open hack2build.myapplication/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-weighing-management": "cds watch --open weighing-management/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-weighing-contracts": "cds watch --open weighing-contracts/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-weighing-contracts": "cds watch --open weighing-contracts/webapp/index.html?sap-ui-xx-viewCache=false",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "build-cf": "mbt build -t gen --mtar mta.tar",
+    "deploy-cf": "cf deploy gen/mta.tar",
+    "undeploy": "cf undeploy fs-agr-ct-returns --delete-services --delete-service-keys --delete-service-brokers",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
   },
   "cds": {
     "sql": {
       "native_hana_associations": false
     },
+    "build": {
+      "target": "gen"
+    },
     "requires": {
       "[production]": {
-        "db": "hana",
-        "auth": "xsuaa"
+        "db": "sqlite",
+        "auth": "dummy"
       },
       "auth": {
         "[development]": {
           "kind": "dummy"
         },
         "[production]": {
-          "kind": "xsuaa"
+          "kind": "dummy"
         }
       }
     }

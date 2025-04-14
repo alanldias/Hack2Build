@@ -1,0 +1,2 @@
+sap.ui.define(["sap/fe/test/TemplatePage"],function(e){"use strict";var i={actions:{},assertions:{}};return new e("hack2build.myapplication::WeighingMain",i)});
+//# sourceMappingURL=WeighingMain.js.map

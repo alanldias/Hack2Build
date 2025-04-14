@@ -1,0 +1,2 @@
+sap.ui.require(["sap/fe/test/JourneyRunner","hack2build/myapplication/test/integration/FirstJourney","hack2build/myapplication/test/integration/pages/WeighingMain"],function(i,n,e){"use strict";var i=new i({launchUrl:sap.ui.require.toUrl("hack2build/myapplication")+"/index.html"});i.run({pages:{onTheWeighingMain:e}},n.run)});
+//# sourceMappingURL=opaTests.qunit.js.map

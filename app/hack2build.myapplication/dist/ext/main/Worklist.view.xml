@@ -1,0 +1,97 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:layout="sap.ui.layout"	
+	xmlns:f="sap.ui.layout.form"
+	controllerName="hack2build.myapplication.ext.main.Worklist">
+	<Page
+		id="idPage"		
+		title="{i18n>weighingTitle}"
+		class= "sapUiResponsivePadding--header" >
+		
+			
+    
+    <List
+      id="vehicleList"
+      mode="SingleSelectMaster"
+      items="{
+        path: '/Weighing'
+      }"
+      itemPress=".onWeighingPress">
+		<StandardListItem id="vehicleListItem"
+		title="{weighingID}"
+		description="{vehicleLicensePlate}"
+		type="Active"
+		 />
+    </List>
+	 <HBox id="HboxButton" class="sapUiTinyMarginBegin">
+              <Button
+                id="btnNewWeighing"
+                text="Nova Pesagem"
+                type="Emphasized"
+                press=".onNewWeighing" />
+             
+            </HBox>
+
+  </Page>
+		
+
+
+
+    <!--IconTabBar id="iconTabBar1" class="sapUiResponsiveContentPadding">
+		<items>
+			<IconTabFilter id="iconTabFilter1" key="info" text="Info">
+				<items>
+					<IconTabFilter id="iconTabItemFilter1" text="{i18n>Info_one}">
+						<Text id="TextFilter11" text="Info one content goes here..." />
+						<Text id="TextFilter12" text="Select another sub tab to see its content..." />
+					</IconTabFilter>
+					<IconTabFilter id="iconTabItemFilter12" text="Info two">
+						<Text id="TextFilter21" text="Info two content goes here..." />
+					</IconTabFilter>
+					<IconTabFilter id="iconTabItemFilter13" text="Info three">
+						<Text id="TextFilter31" text="Info three content goes here..." />
+					</IconTabFilter>
+					<IconTabFilter id="iconTabItemFilter14" text="Info four">
+						<Text id="TextFilter41" text="Info four content goes here..." />
+					</IconTabFilter>
+				</items>
+
+				<Text id="TextTab1" text="Info own content goes here..." />
+				<Text id="TextTab2" text="Select a sub tab to see its content..." />
+			</IconTabFilter>
+
+			<IconTabFilter id="iconTabFilter2" key="attachments" text="Attachments">
+				<items>
+					<IconTabFilter id="iconTabItemFilter21" text="Attachment one">
+						<Text id="TextFilter221" text="Attachment one goes here..." />
+					</IconTabFilter>
+					<IconTabFilter id="iconTabItemFilter22" text="Attachment two">
+						<Text id="TextFilter222" text="Attachment two goes here..." />
+					</IconTabFilter>
+				</items>
+
+				<Text id="TextTab3" text="Attachments own content goes here..." />
+			</IconTabFilter>
+
+			<IconTabFilter id="iconTabFilter3" key="notes" text="Notes">
+				<items>
+					<IconTabFilter id="iconTabItemFilter31" text="Note one">
+						<Text id="TextFilter331" text="Note one goes here..." />
+					</IconTabFilter>
+					<IconTabFilter id="iconTabItemFilter32" text="Note two">
+						<Text id="TextFilter332" text="Note two goes here..." />
+					</IconTabFilter>
+				</items>
+
+				<Text id="TextTab4" text="Notes own content goes here..." />
+			</IconTabFilter>
+		</items>
+	</IconTabBar-->
+    
+    
+    <!--Page id="Main" title="{i18n&gt;MainTitle}">
+        <content>
+            <macros:FilterBar id="FilterBar" metaPath="/Weighing/@com.sap.vocabularies.UI.v1.SelectionFields#filterBarMacro"/>
+        </content>
+    </Page-->
+</mvc:View>

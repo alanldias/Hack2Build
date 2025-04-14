@@ -1,0 +1,2 @@
+sap.ui.require(["sap/fe/test/JourneyRunner","weighingcontracts/test/integration/FirstJourney","weighingcontracts/test/integration/pages/WeighingMain"],function(n,e,i){"use strict";var n=new n({launchUrl:sap.ui.require.toUrl("weighingcontracts")+"/index.html"});n.run({pages:{onTheWeighingMain:i}},e.run)});
+//# sourceMappingURL=opaTests.qunit.js.map

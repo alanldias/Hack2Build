@@ -1,3 +1,5 @@
+const { func } = require("@sap/cds/lib/ql/cds-ql");
+
 sap.ui.define(
     [
         'sap/fe/core/PageController',
@@ -38,6 +40,10 @@ sap.ui.define(
             
                 // Aplica os filtros
                 oBinding.filter([oCombinedFilter]);
+            },
+
+            onAddContract:function(){
+
             }
             
             /**

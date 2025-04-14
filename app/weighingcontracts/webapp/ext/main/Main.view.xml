@@ -1,4 +1,4 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:macros="sap.fe.macros" 	xmlns:l="sap.ui.layout"
+<mvc:View xmlns:tnt="sap.tnt" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:macros="sap.fe.macros" 	xmlns:l="sap.ui.layout"
     xmlns:html="http://www.w3.org/1999/xhtml" controllerName="weighingcontracts.ext.main.Main">
 
     <Page
@@ -108,6 +108,7 @@
 
             </l:SplitPane>
             <l:SplitPane id="Splitpane2" requiredParentWidth="400">
+			
                  <Table id="idContractsTableleft"
 								contextualWidth="Auto"
 								popinLayout="GridSmall"
@@ -116,7 +117,16 @@
 								items="{
 								path: '/ContractVehicleListView',
 								 model: 'vwModel'
-							}">
+							}">				
+							<infoToolbar>
+								<tnt:ToolHeader id="infoToolbarHeader">
+								<Button
+									id="btnAddContract"
+									text="Add to Contract"
+									type="Emphasized"
+									press=".onAddContract" />								
+								</tnt:ToolHeader>
+							</infoToolbar>			
 							<columns>
 								<Column id="idContractColumn">
 									<header>
@@ -160,10 +170,14 @@
 											text="{vwModel>supplier}" />
 										<Label id="Lblcontract5"
 											text="{vwModel>amount}" />
+
+											
 									</cells>
 								</ColumnListItem>
 							</items>
 						</Table>
+
+						
 
             </l:SplitPane>
 		</l:PaneContainer>

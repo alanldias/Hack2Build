@@ -1,0 +1,31 @@
+{
+    "version": "0.2",
+    "floorplan": "FE_FPM",
+    "project": {
+        "name": "weighing-contracts",
+        "targetFolder": "/home/user/projects/Hack2Build",
+        "title": "Application to manage weighing contracts with detailed views.",
+        "description": "Application to manage weighing contracts with detailed views.",
+        "ui5Version": "1.132.1",
+        "localUI5Version": "1.82.2",
+        "sapux": true
+    },
+    "service": {
+        "servicePath": "/service/hack2Build/",
+        "capService": {
+            "projectPath": "/home/user/projects/Hack2Build",
+            "serviceName": "hack2BuildSrv",
+            "serviceCdsPath": "srv/service.cds"
+        }
+    },
+    "entityConfig": {
+        "mainEntity": {
+            "entityName": "Weighing"
+        }
+    },
+    "projectType": "FLEXIBLE_PROGRAMMING_MODEL",
+    "telemetryData": {
+        "generationSourceName": "AI Headless",
+        "generationSourceVersion": "1.17.2"
+    }
+}

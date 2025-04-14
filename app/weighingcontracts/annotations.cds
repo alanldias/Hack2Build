@@ -1,0 +1,1 @@
+using hack2BuildSrv as service from '../../srv/service';

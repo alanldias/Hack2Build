@@ -1,0 +1,151 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:macros="sap.fe.macros" 	xmlns:l="sap.ui.layout"
+    xmlns:html="http://www.w3.org/1999/xhtml" controllerName="weighingcontracts.ext.main.Main">
+
+    <Page
+		id="idPage"		
+		title="{i18n>weighingTitle}"
+		class= "sapUiResponsivePadding--header" >
+
+        <l:ResponsiveSplitter id="responsiveSplitter" height="100%">
+		    <l:PaneContainer id="idPaneContainer">
+                <l:SplitPane id="idSplitPane" requiredParentWidth="500">
+
+                <Table id="idWeighingTableleft"
+								contextualWidth="Auto"
+								popinLayout="GridSmall"
+                                mode="SingleSelect"
+								headerText="Weighings"
+								items="{
+								path: '/viewWSummary'
+							}">
+							<columns>
+								<Column id="idWeighingColumn">
+									<header>
+										<Text id="Text" text="Date" />
+									</header>
+								</Column>
+								<Column id="idWeighingColumn2">
+									<header>
+										<Text id="Textw2" text="Time" />
+									</header>
+								</Column>
+								<Column id="idWeighingColumn3">
+									<header>
+										<Text id="TextCw3" text="Plate" />
+									</header>
+								</Column>
+								<Column id="idWeighingColumn4">
+									<header>
+										<Text id="TextCw4" text="ProductCode" />
+									</header>
+								</Column>
+								<Column id="idWeighingColumn5">
+									<header>
+										<Text id="TextCw5" text="ProductName" />
+									</header>
+								</Column>
+								<Column id="idWeighingColumn6">
+									<header>
+										<Text id="TextCw6" text="Supplier" />
+									</header>
+								</Column>
+								<Column id="idWeighingColumn7">
+									<header>
+										<Text id="TextCw7" text="netWeight(kg)" />
+									</header>
+								</Column>
+                                </columns>
+							<items>
+								<ColumnListItem id="idProductColumnItem">
+									<cells>
+										<Label id="Lbl1"
+											text="{date}"/>
+										<Label id="Lbl2"
+											text="{time}" />
+										<Label id="Lbl3"
+											text="{plate}" />
+										<Label id="Lbl4"
+											text="{productCode}" />
+										<Label id="Lbl5"
+											text="{productName}" />
+										<Label id="Lbl6"
+											text="{supplier}" />
+										<Label id="Lbl7"
+											text="{netWeight}" />
+                                            </cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+		
+			
+            
+                            <!-- <List
+                            id="vehicleList"
+                            mode="MultiSelect"
+                            items="{
+                                path: '/Weighing'
+                            }"
+                            itemPress=".onWeighingPress">
+                                <StandardListItem id="vehicleListItem"
+                                title="{weighingID}"
+                                description="{vehicleLicensePlate}"
+                                type="Active"
+                                />
+                            </List> -->
+                            <!-- <HBox id="HboxButton" class="sapUiTinyMarginBegin">
+                                    <Button
+                                        id="btnNewWeighing"
+                                        text="Adicionar a nota"
+                                        type="Emphasized"
+                                        press=".onNewWeighing" />
+                                    
+                                    </HBox><Button
+                                        id="btnRefresh"
+                                        text="Atualizar"
+                                        type="Default"
+                                        press=".onRefresh" />    -->
+
+            </l:SplitPane>
+            <l:SplitPane id="Splitpane2" requiredParentWidth="400">
+                 <Table id="idContractsTableleft"
+								contextualWidth="Auto"
+								popinLayout="GridSmall"
+                                mode="None"
+								headerText="Contracts"
+								items="{
+								path: '/ContractSummaryView',
+								 model: 'vwModel'
+							}">
+							<columns>
+								<Column id="idContractColumn">
+									<header>
+										<Text id="TextContract" text="Contracts" />
+									</header>
+								</Column>
+								<Column id="idContractColumn2">
+									<header>
+										<Text id="TextContract2" text="Contracts type" />
+									</header>
+								</Column>
+                                </columns>
+							<items>
+								<ColumnListItem id="idProductColumnItem2">
+									<cells>
+										<Label id="Lblcontract1"
+											text="{vwModel>contract}"/>
+										<Label id="Lblcontract2"
+											text="{vwModel>productCode}" />
+                                            </cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+
+            </l:SplitPane>
+		</l:PaneContainer>
+	</l:ResponsiveSplitter>
+
+  </Page>
+    <!-- <Page id="Main" title="{i18n>MainTitle}">
+        <content></content>
+    </Page> -->
+</mvc:View>

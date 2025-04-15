@@ -13,6 +13,13 @@ sap.ui.define([
     onInit: function () {
       const oVehicleViewModel = new JSONModel();
       this.getView().setModel(oVehicleViewModel, "vehicleView");
+
+      const oModel = this.getOwnerComponent().getModel("ProductModel");
+        oModel.bindList("/Product").requestContexts().then(contexts => {
+          console.log("Produtos carregados:", contexts.map(c => c.getObject()));
+        });
+      // const oProductViewModel = new JSONModel();
+      // this.getView().setModel(oProductViewModel, "ProductModel");
       const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
      //oRouter.getRoute("weighingCreate").attachMatched(this._onRouteMatched, this);
 
@@ -67,7 +74,9 @@ sap.ui.define([
       const oVehicleViewModel = new sap.ui.model.json.JSONModel({
         vehicle: {
           driverName: "",
-          company: ""
+          company: "",
+          productCode:"",
+          productName:""
         },
         tareWeight: null,
         grossWeight: null,
@@ -241,12 +250,18 @@ sap.ui.define([
     
       // Calcular líquido se ainda não tiver
       const netWeight = vehicleData.netWeight || (vehicleData.grossWeight - vehicleData.tareWeight);
+
+     
+
+      
     
       // Montar payload
       const payload = {
         weighingID: weighingData.weighingID,
         tareWeight: vehicleData.tareWeight,
         grossWeight: vehicleData.grossWeight,
+        productCode: vehicleData.vehicle.productID,
+        productName:vehicleData.vehicle.productName,
         netWeight: netWeight,
         timestamp: new Date().toISOString(), // ou pegue de outro campo se tiver
         vehicleLicensePlate: vehicleData.vehicle.licensePlate || "", // opcional se tiver esse campo no modelo
@@ -297,6 +312,8 @@ sap.ui.define([
       // Buscar veículo pelo filtro
       const oBinding = oVehicleModel.bindList(
         "/Vehicle",
+        null,
+        null,
         null,
         null,
         [new Filter("licensePlate", FilterOperator.EQ, sPlaca)]

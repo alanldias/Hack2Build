@@ -16,7 +16,7 @@
       items="{
         path: '/Weighing'
       }"
-      itemPress=".onWeighingPress">
+      >
 		<StandardListItem id="vehicleListItem"
 		title="{weighingID}"
 		description="{vehicleLicensePlate}"
@@ -26,7 +26,7 @@
 	 <HBox id="HboxButton" class="sapUiTinyMarginBegin">
               <Button
                 id="btnNewWeighing"
-                text="Nova Pesagem"
+                text="{i18n>NewWeighing}"
                 type="Emphasized"
                 press=".onNewWeighing" />
              

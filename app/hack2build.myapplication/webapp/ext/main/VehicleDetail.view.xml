@@ -1,17 +1,18 @@
 <mvc:View
-  xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+  xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
   controllerName="hack2build.myapplication.ext.main.VehicleDetail">
 
   <Page id="pageDetail"
-    title="Detalhes da Pesagem"
+    title="{i18n>weighingDetail}"
     showNavButton="true"
     navButtonPress=".onNavBack">
 
     <content>
     <ObjectHeader id="ObjectHeader" title="{i18n>weight}" backgroundDesign="Solid" numberUnit="CurrencyCode" >
       <attributes>
-        <ObjectAttribute id="ObjectAttribute" title="LicencePlate" text="{vehicleView>/vehicle/licensePlate}"/>
-        <ObjectAttribute id="ObjectAttribute1" title="Driver" text="{vehicleView>/vehicle/driverName}"/>
+        <ObjectAttribute id="ObjectAttribute" title="{i18n>LicencePlate}" text="{vehicleView>/vehicle/licensePlate}"/>
+        <ObjectAttribute id="ObjectAttribute1" title="{i18n>Driver}" text="{vehicleView>/vehicle/driverName}"/>
+        <!-- <ObjectAttribute id="ObjectAttribute2" title="Produto" text="{weighingData>/productName}"/> -->        
       </attributes>
       <statuses>
         <ObjectStatus id="ObjectStatus" title="Status" text="on the scale" state="Success"/>
@@ -19,23 +20,29 @@
     </ObjectHeader>
     <IconTabBar id="iconTabFilter1" expanded="{device>/isNoPhone}" class="sapUiSmallMarginBottom sapUiResponsiveContentPadding">
       <items>
-        <IconTabFilter id="iconTabItemFilter1" key="info" text="Dados do transporte">
-          <f:SimpleForm id="simpleFormId1" layout="ResponsiveGridLayout">
-                  
-            <!-- Hidden ID field (necessário para update) -->
+      
+        <IconTabFilter id="iconTabItemFilter1" key="info" text="{i18n>TransportData}">
+          <FlexBox id="flexBoxId1" wrap="Wrap" fitContainer="true" >
+            <f:SimpleForm id="simpleFormId1" layout="ResponsiveGridLayout">
+                    
+              <!-- Hidden ID field (necessário para update) -->
+              
+
+              <Label id="labelVehicleAssoc" text="{i18n>Transport}" />
+              <Input id="inputVehicleAssoc" editable="true" />
+
+              <Label id="labelDiver" text="{i18n>Driver}" />
+              <Input id="inputDriver" value="{vehicleView>/vehicle/driverName}" editable="true" />
+
+              <Label id="labelCompany" text="{i18n>Company}" />
+              <Input id="inputCompany" value="{vehicleView>/vehicle/company}" editable="false" />
+              
+              <Label id="labelProduct" text="{i18n>Product}" />
+              <Input id="inputProduct" value="{vehicleView>/vehicle/productName}" editable="false" />
             
 
-            <Label id="labelVehicleAssoc" text="Veículo" />
-            <Input id="inputVehicleAssoc" editable="true" />
-
-            <Label id="labelDiver" text="Motorista" />
-            <Input id="inputDriver" value="{vehicleView>/vehicle/driverName}" editable="true" />
-
-            <Label id="labelCompany" text="Empresa" />
-            <Input id="inputCompany" value="{vehicleView>/vehicle/company}" editable="false" />
-          
-
-          </f:SimpleForm>
+            </f:SimpleForm>
+          </FlexBox>
             <HBox id="HboxButtons" class="sapUiTinyMarginBegin">
               <Button
                 id="btnFindVehicle"
@@ -44,42 +51,45 @@
                 press=".onFindVehicle" />              
             </HBox>
         </IconTabFilter>
-        <IconTabFilter id="iconTabItemFilter2" key="Pesagem" text="Pesagem">
-            <f:SimpleForm id="simpleFormId2" layout="ResponsiveGridLayout">
-              <Input id="inputWeighingIDHidden" value="{weighingData>/ID}" visible="false" />
+        
+        <IconTabFilter id="iconTabItemFilter2" key="Pesagem" text="{i18n>Weighing}">
+            <FlexBox id="flexBoxId2" wrap="Wrap" fitContainer="true" >
+              <f:SimpleForm id="simpleFormId2" layout="ResponsiveGridLayout">
+                
+                <Input id="inputWeighingIDHidden" value="{weighingData>/ID}" visible="false" />
 
-              <Label id="labelWeighingID" text="Código da Pesagem" />
-              <Input id="inputWeighingID" value="{weighingData>/weighingID}" editable="true" />
+                <Label id="labelWeighingID" text="{i18n>WeighingCode}" />
+                <Input id="inputWeighingID" value="{weighingData>/weighingID}" editable="true" />
 
-              <!-- <Label id="labelVehicleLicensePlate" text="Placa do Veículo" />
-              <Input id="inputVehicleLicensePlate" value="{weighingData>/vehicleLicensePlate}" editable="true" /> -->
+                <!-- <Label id="labelVehicleLicensePlate" text="Placa do Veículo" />
+                <Input id="inputVehicleLicensePlate" value="{weighingData>/vehicleLicensePlate}" editable="true" /> -->
 
-              <Label id="labelTareWeight" text="Peso da Tara (kg)" />
-              <Input id="inputTareWeight" value="{vehicleView>/tareWeight}" type="Number" editable="true" />
+                <Label id="labelTareWeight" text="{i18n>tareWeight}" />
+                <Input id="inputTareWeight" value="{vehicleView>/tareWeight}" type="Number" editable="true" />
 
-              <Label id="labelGrossWeight" text="Peso Bruto (kg)" />
-              <Input id="inputGrossWeight" value="{vehicleView>/grossWeight}" type="Number" editable="false" />
+                <Label id="labelGrossWeight" text="{i18n>grossWeight}" />
+                <Input id="inputGrossWeight" value="{vehicleView>/grossWeight}" type="Number" editable="false" />
 
-              <Label id="labelNetWeight" text="Peso Líquido (kg)" />
-              <Input id="inputNetWeight" value="{vehicleView>/netWeight}" type="Number" editable="false" />
-              
-            </f:SimpleForm>
+                <Label id="labelNetWeight" text="{i18n>netWeight}" />
+                <Input id="inputNetWeight" value="{vehicleView>/netWeight}" type="Number" editable="false" />
+              </f:SimpleForm>
+            </FlexBox>
             <HBox id="HboxButtonsSave">
               <Button
                 id="btnpesar"
-                text="Pesar"
+                text="{i18n>check}"
                 type="Emphasized"
                 class="sapUiTinyMarginBegin"
                 press=".onPesar" />
               <Button
                 id="btnSaveWeighing"
-                text="Salvar"
+                text="{i18n>Save}"
                 type="Default"
                 class="sapUiTinyMarginBegin"
                 press=".onSaveWeighing" />
               <Button
                 id="btnCancelWeighing"
-                text="Cancelar"
+                text="{i18n>Cancel}"
                 type="Reject"
                 class="sapUiTinyMarginBegin"
                 press=".onCancelWeighing" />

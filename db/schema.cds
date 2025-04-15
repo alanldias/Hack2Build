@@ -5,6 +5,8 @@ entity Vehicle : cuid {
   licensePlate: String(20);
   driverName: String(100);
   company: String(100);
+  productCode: String(20);
+  productName: String(100);
 }
 
 @assert.unique: { productID: [productID] }

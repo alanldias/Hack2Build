@@ -7,7 +7,9 @@ service hack2BuildSrv {
     ID,
     licensePlate,
     driverName,
-    company
+    company,
+    productCode,
+    productName
   };
   @odata.draft.enabled
   entity Product as projection on my.Product;

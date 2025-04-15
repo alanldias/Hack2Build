@@ -95,6 +95,16 @@
         },
         "dataSource": "mainService"
       },
+      "ProductModel": {
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "serviceUrl": "/service/hack2Build/"
+        },
+        "dataSource": "mainService"
+      },
       "weighingModel": {
         "type": "sap.ui.model.odata.v4.ODataModel",
         "settings": {

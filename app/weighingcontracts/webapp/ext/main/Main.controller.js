@@ -55,7 +55,7 @@ sap.ui.define(
             const oContractContext = oContractTable.getSelectedItem()?.getBindingContext("vwModel");
           
             if (!oWeighingContext || !oContractContext) {
-              MessageBox.error("Selecione uma pesagem e um contrato.");
+              MessageBox.error("Select a weight to associate.");
               return;
             }
           
@@ -72,7 +72,7 @@ sap.ui.define(
               
               
               setTimeout(() => {
-                MessageBox.success("Contrato associado com sucesso!");
+                MessageBox.success("Contract Association sucessful!");
               }, 100); // 100ms costuma ser suficiente
               
               // MessageToast.show("Contrato associado com sucesso!");
@@ -81,7 +81,7 @@ sap.ui.define(
               
             } catch (err) {
               console.error("Erro ao associar contrato:", err);
-              MessageBox.error("Erro ao associar contrato: " + err.message);
+              MessageBox.error("Contract Association Error: " + err.message);
             }
           }
             

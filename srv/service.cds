@@ -52,13 +52,13 @@ service hack2BuildSrv {
     timestamp                   as weighingDate,
     vehicleLicensePlate         as vehiclePlate,
     product.productID           as productID,
+    company                     as supplier,
     contractID,
     
     contract                    ,
     netWeight,
     productCode as material,
-    productName as materialName,
-    company as supplier
+    productName as materialName
   }where contractID is null;
 
 

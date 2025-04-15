@@ -15,44 +15,44 @@
 								selectionChange=".onWeighingSelect"
 								popinLayout="GridSmall"
                                 mode="SingleSelect"
-								headerText="Weighings"
+								headerText="{i18n>weighingTitle}"
 								items="{
 								path: '/WeighingDetails'
 							}">
 							<columns>
 								<Column id="idWeighingColumn">
 									<header>
-										<Text id="Text" text="Date" />
+										<Text id="Text" text="{i18n>Date}" />
 									</header>
 								</Column>
 								<Column id="idWeighingColumn2">
 									<header>
-										<Text id="Textw2" text="Time" />
+										<Text id="Textw2" text="{i18n>Time}" />
 									</header>
 								</Column>
 								<Column id="idWeighingColumn3">
 									<header>
-										<Text id="TextCw3" text="Plate" />
+										<Text id="TextCw3" text="{i18n>Plate}" />
 									</header>
 								</Column>
 								<Column id="idWeighingColumn4">
 									<header>
-										<Text id="TextCw4" text="ProductCode" />
+										<Text id="TextCw4" text="{i18n>ProductCode}" />
 									</header>
 								</Column>
 								<Column id="idWeighingColumn5">
 									<header>
-										<Text id="TextCw5" text="materialName" />
+										<Text id="TextCw5" text="{i18n>ProductName}" />
 									</header>
 								</Column>
 								<Column id="idWeighingColumn6">
 									<header>
-										<Text id="TextCw6" text="Supplier" />
+										<Text id="TextCw6" text="{i18n>Supplier}" />
 									</header>
 								</Column>
 								<Column id="idWeighingColumn7">
 									<header>
-										<Text id="TextCw7" text="netWeight(kg)" />
+										<Text id="TextCw7" text="{i18n>netWeight}" />
 									</header>
 								</Column>
                                 </columns>
@@ -131,28 +131,28 @@
 							<columns>
 								<Column id="idContractColumn">
 									<header>
-										<Text id="TextContract" text="Contracts" />
+										<Text id="TextContract" text="{i18n>weighingContractsTitle}Contracts" />
 									</header>
 								</Column>
 								
 								<Column id="idContractColumn3">
 									<header>
-										<Text id="TextContract3" text="Product Code" />
+										<Text id="TextContract3" text="{i18n>ProductCode}" />
 									</header>
 								</Column>
 								<Column id="idContractColumn4">
 									<header>
-										<Text id="TextContract4" text="Product Name" />
+										<Text id="TextContract4" text="{i18n>ProductName}" />
 									</header>
 								</Column>
 								<Column id="idContractColumn5">
 									<header>
-										<Text id="TextContract5" text="Supplier" />
+										<Text id="TextContract5" text="{i18n>Supplier}" />
 									</header>
 								</Column>
 								<Column id="idContractColumn6">
 									<header>
-										<Text id="TextContract6" text="Contract Amount" />
+										<Text id="TextContract6" text="{i18n>Amount}" />
 									</header>
 								</Column>
 

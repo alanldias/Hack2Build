@@ -260,7 +260,8 @@ sap.ui.define([
         weighingID: weighingData.weighingID,
         tareWeight: vehicleData.tareWeight,
         grossWeight: vehicleData.grossWeight,
-        productCode: vehicleData.vehicle.productID,
+        productCode: vehicleData.vehicle.productCode,
+        company: vehicleData.vehicle.company,
         productName:vehicleData.vehicle.productName,
         netWeight: netWeight,
         timestamp: new Date().toISOString(), // ou pegue de outro campo se tiver

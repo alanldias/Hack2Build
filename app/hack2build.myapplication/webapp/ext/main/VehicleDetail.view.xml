@@ -96,59 +96,130 @@
             </HBox>
           <!-- <List id="ListID" headerText="A List" showSeparators="Inner"> </List> -->
         </IconTabFilter>
-        <IconTabFilter id="iconTabItemFilter3" key="notes" text="Classificação/Transgenia">
-        <HBox id="HboxClassificationSave" class="sapUiTinyMarginBegin">
-          <VBox class="sapUiSmallMarginEnd" id="VBoxClassification">
-            <f:SimpleForm id="simpleFormId3" layout="ResponsiveGridLayout">
+        <IconTabFilter id="iconTabItemFilter3" key="notes" text="{i18n>Classification/Transgenics}">
+        <HBox id="HboxClassificationSave"  alignContent="Center" alignItems="Center">          
+            <f:SimpleForm id="simpleFormIHumidity" layout="ResponsiveGridLayout">
+
+                <f:toolbar>
+                  <Toolbar id="TBHumidity">
+                    <Title id="TitleiHumidity" text="{i18n>Humidity}"/>
+                    <ToolbarSpacer id="ToolbarSpacerHumidity" />
+                    <!-- <Button id="btnSalvarClassification" icon="sap-icon://save" press=".onSaveClassification"/>   -->
+                                
+                  </Toolbar>
+              </f:toolbar>             
+              <HBox id="idHumidityHBOX"  alignItems="Center" justifyContent="Center" fitContainer="true" >
+               <VBox id="VBoxHumidity" alignItems="Center" justifyContent="Center" fitContainer="true">
+                    <FlexBox id="flexBoxId3" wrap="NoWrap" fitContainer="true" alignContent="Center" >
+                      
+                        <Label id="labelHumidity" text="{i18n>Humidity}" />
+                        <Input id="inputHumidity" type="Number" value="{Classification>/humidity}" editable="true" />
+
+                        <Label id="labelResultHumidity" text="Resultado Umidade" visible="false" />
+                        <Input id="inputResultHumidity" type="Number" value="{Classification>/resultHumidity}" visible="false" editable="true" />
+
+                        <Label id="labelDiscountHumidity" text="{i18n>DiscountHumidity}" />
+                        <Input id="inputDiscountHumidity" type="Number" value="{Classification>/discountHumidity}" editable="true" />
+                      
+                    </FlexBox>
+                </VBox>
+              </HBox>
+            </f:SimpleForm>
+             
+
+
+
+
+            <f:SimpleForm id="simpleFormIimpurity" layout="ResponsiveGridLayout">
+
+                <f:toolbar>
+                  <Toolbar id="TBimpurity">
+                    <Title id="Titleiimpurity" text="{i18n>Impurity}"/>
+                    <ToolbarSpacer id="ToolbarSpacerimpurity" />
+                    <!-- <Button id="btnSalvarClassification" icon="sap-icon://save" press=".onSaveClassification"/>   -->
+                                
+                  </Toolbar>
+              </f:toolbar>
+              
+              <HBox id="idimpurityHBOX"  alignItems="Center" justifyContent="Start" fitContainer="true">
+               <VBox id="VBoximpurity" alignItems="Center" justifyContent="Start" fitContainer="true">
+                    <FlexBox id="flexBoxId4" wrap="NoWrap" fitContainer="true" >
+                      
+                        <Label id="labelImpurity" text="{i18n>Impurity}" />
+                        <Input id="inputImpurity" type="Number" value="{Classification>/impurity}" editable="true" />
+
+                        <Label id="labelResultImpurity" text="Resultado Impureza"  visible="false"/>
+                        <Input id="inputResultImpurity" type="Number" value="{Classification>/resultImpurity}" visible="false" editable="true" />
+
+                        <Label id="labelDiscountImpurity" text="{i18n>DiscountImpurity}" />
+                        <Input id="inputDiscountImpurity" value="{Classification>/discountImpurity}" editable="true" />
+                      
+                    </FlexBox>
+                    </VBox>
+                  </HBox>
+              </f:SimpleForm>
+
+
+              <f:SimpleForm id="simpleFormIdamaged" layout="ResponsiveGridLayout">
+
+                <f:toolbar>
+                  <Toolbar id="TBdamaged">
+                    <Title id="Titleidamaged" text="{i18n>damaged}"/>
+                    <ToolbarSpacer id="ToolbarSpacerdamaged" />
+                    <!-- <Button id="btnSalvarClassification" icon="sap-icon://save" press=".onSaveClassification"/>   -->
+                                
+                  </Toolbar>
+              </f:toolbar>              
+              <HBox id="idDamagedHBOX"  alignItems="Center" justifyContent="Start" fitContainer="true">
+               <VBox id="VBoxdamaged" alignItems="Center" justifyContent="Start" fitContainer="true">
+                    <FlexBox id="flexBoxId6" wrap="NoWrap" fitContainer="true" >
+                      
+                        <Label id="labelDamaged" text="{i18n>damaged%}" />                      
+                        <Input id="inputDamaged" type="Number" value="{Classification>/damaged}" editable="true" />
+                      
+
+                      <Label id="labelResultDamaged" text="Resultado Avariado"  visible="false" />
+                      <Input id="inputResultDamaged" type="Number" value="{Classification>/resultDamaged}" editable="true" visible="false"/>
+
+                      
+                      <Label id="labelDiscountDamaged" text="{i18n>Discountdamaged}" />
+                      <Input id="inputDiscountDamaged" type="Number" value="{Classification>/discountDamaged}" editable="true" />
+                      
+                    </FlexBox>
+                    </VBox>
+                  </HBox>
+              </f:SimpleForm>
+
+              <f:SimpleForm id="simpleFormIgreenish" layout="ResponsiveGridLayout">
               <f:toolbar>
-                <Toolbar id="TB1">
-                  <Title id="Title1" text="Claassification"/>
-                  <ToolbarSpacer id="ToolbarSpacer1" />
-                  <Button id="btnSalvarClassification" icon="sap-icon://save" press=".onSaveClassification"/>  
+                <Toolbar id="TBgreenish">
+                  <Title id="Titleimogreenish" text="{i18n>greenish}"/>
+                  <ToolbarSpacer id="ToolbarSpacergreenish" />
+                  <!-- <Button id="btnSalvarClassification" icon="sap-icon://save" press=".onSaveClassification"/>   -->
                               
                 </Toolbar>
               </f:toolbar>
-                <Input id="inputClassIDHidden" value="{weighingData>/ID}" visible="false" />
+                <FlexBox id="flexBoxIdgreenish" wrap="NoWrap" fitContainer="true" >
+              <VBox id="VBoxgreenish">
+                <FlexBox id="flexBoxId5" wrap="NoWrap" fitContainer="true" >
 
-                <Label id="labelHumidity" text="Umidade" />
-                <Input id="inputHumidity" type="Number" value="{Classification>/humidity}" editable="true" />
+                <Label id="labelGreenish" text="{i18n>greenish%}" />
+                  <Input id="inputGreenish" type="Number" value="{Classification>/greenish}" editable="true" />
 
-                <Label id="labelResultHumidity" text="Resultado Umidade" />
-                <Input id="inputResultHumidity" type="Number" value="{Classification>/resultHumidity}" editable="true" />
+                  <Label id="labelResultGreenish" text="Resultado Esverdeado"  visible="false" />
+                  <Input id="inputResultGreenish" type="Number" value="{Classification>/resultGreenish}" visible="false" editable="true" />
 
-                <Label id="labelDiscountHumidity" text="Desconto Umidade" />
-                <Input id="inputDiscountHumidity" type="Number" value="{Classification>/discountHumidity}" editable="true" />
-
-                <Label id="labelImpurity" text="Impureza" />
-                <Input id="inputImpurity" type="Number" value="{Classification>/impurity}" editable="true" />
-
-                <Label id="labelResultImpurity" text="Resultado Impureza" />
-                <Input id="inputResultImpurity" type="Number" value="{Classification>/resultImpurity}" editable="true" />
-
-                <Label id="labelDiscountImpurity" text="Desconto Impureza" />
-                <Input id="inputDiscountImpurity" value="{Classification>/discountImpurity}" editable="true" />
-
-                <Label id="labelDamaged" text="Avariados" />
-                <Input id="inputDamaged" type="Number" value="{Classification>/damaged}" editable="true" />
-
-                <Label id="labelResultDamaged" text="Resultado Avariado" />
-                <Input id="inputResultDamaged" type="Number" value="{Classification>/resultDamaged}" editable="true" />
-
-                <Label id="labelDiscountDamaged" text="Desconto Avariado" />
-                <Input id="inputDiscountDamaged" type="Number" value="{Classification>/discountDamaged}" editable="true" />
-
-                <Label id="labelGreenish" text="Esverdeados" />
-                <Input id="inputGreenish" type="Number" value="{Classification>/greenish}" editable="true" />
-
-                <Label id="labelResultGreenish" text="Resultado Esverdeado" />
-                <Input id="inputResultGreenish" type="Number" value="{Classification>/resultGreenish}" editable="true" />
-
-                <Label id="labelDiscountGreenish" text="Desconto Esverdeado" />
-                <Input id="inputDiscountGreenish" type="Number" value="{Classification>/discountGreenish}" editable="true" />
-
-              </f:SimpleForm>
+                  <Label id="labelDiscountGreenish" text="{i18n>Discountgreenish}" />
+                  <Input id="inputDiscountGreenish" type="Number" value="{Classification>/discountGreenish}" editable="true" />
+                </FlexBox> 
+              
               </VBox>
-              <VBox class="sapUiTinyMarginEnd" id="VBoxTransgenia">
+
+              </FlexBox> 
+              </f:SimpleForm>
+
+
+              <!-- <VBox class="sapUiTinyMarginEnd" id="VBoxTransgenia">
                 <f:SimpleForm id="simpleFormId4" layout="ResponsiveGridLayout">
                 <Toolbar id="TB2">
                 <Title id="Title2" text="Transgenia"/>
@@ -173,7 +244,7 @@
               
               </VBox>
           </HBox>
-            <HBox id="HboxTransgenia" class="sapUiTinyMarginBegin">
+            <HBox id="HboxTransgenia" class="sapUiTinyMarginBegin"> -->
                <!-- <f:SimpleForm id="simpleFormId4" layout="ResponsiveGridLayout">
                 <Toolbar id="TB2">
                 <Title id="Title2" text="Transgenia"/>
@@ -182,8 +253,42 @@
                             
               </Toolbar>
                </f:SimpleForm> -->
-            </HBox>
           <!-- <FeedInput id="fieldInputId"/> -->
+
+          
+        </HBox>
+                <Toolbar id="TBTransgeics">
+                  <Title id="TitleiTBTransgeics" text="{i18n>Transgenics}"/>
+                  <ToolbarSpacer id="ToolbarSpacerTransgenics" />
+                  <!-- <Button id="btnSalvarClassification" icon="sap-icon://save" press=".onSaveClassification"/>   -->
+                              
+                </Toolbar>
+              <FlexBox id="flexBoxIdGreenish" wrap="NoWrap" fitContainer="true">
+              
+              
+                <Label id="labelDeclarado" text="{i18n>avowed}" />
+                <CheckBox id="checkboxDeclarado" selected="{Transgenics>/declarado}" />
+
+                <Label id="labelParticipante" text="{i18n>Participant}" />
+                <CheckBox id="checkboxParticipante" selected="{Transgenics>/participante}" />
+
+                <Label id="labelRREConvenciona" text="{i18n>Convencional}" />
+                <CheckBox id="checkboxRREConvenciona" selected="{Transgenics>/rrConvenciona}" />
+
+                <Label id="labelTestadaNegativa" text="{i18n>Negative}" />
+                <CheckBox id="checkboxTestadaNegativa" selected="{Transgenics>/testadaNegativa}" />
+
+                <Label id="labelTestadaPositiva" text="{i18n>Positive}" />
+                <CheckBox id="checkboxTestadaPositiva" selected="{Transgenics>/testadaPositiva}" /> 
+
+
+              <Button
+                id="btnSaveClassification"
+                text="{i18n>Save}"
+                type="Default"
+                class="sapUiTinyMarginBegin"
+                press=".onSaveClassification" />
+              </FlexBox>
         </IconTabFilter>
       </items>
     </IconTabBar>

@@ -219,6 +219,10 @@ sap.ui.define([
 
     },
 
+    onClassificationsubmit(){
+
+    },
+
      
     onSaveWeighing: function () {
       const oView = this.getView();

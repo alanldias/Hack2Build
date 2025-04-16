@@ -131,7 +131,7 @@
 							<columns>
 								<Column id="idContractColumn">
 									<header>
-										<Text id="TextContract" text="{i18n>weighingContractsTitle}Contracts" />
+										<Text id="TextContract" text="{i18n>weighingContractsTitle}" />
 									</header>
 								</Column>
 								

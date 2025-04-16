@@ -28,7 +28,7 @@
               <!-- Hidden ID field (necessário para update) -->
               
 
-              <Label id="labelVehicleAssoc" text="{i18n>Transport}" />
+              <Label id="labelVehicleAssoc" text="{i18n>LicencePlate}" />
               <Input id="inputVehicleAssoc" editable="true" />
 
               <Label id="labelDiver" text="{i18n>Driver}" />
@@ -98,7 +98,7 @@
         </IconTabFilter>
         <IconTabFilter id="iconTabItemFilter3" key="notes" text="{i18n>Classification/Transgenics}">
         <HBox id="HboxClassificationSave"  alignContent="Center" alignItems="Center">          
-            <f:SimpleForm id="simpleFormIHumidity" layout="ResponsiveGridLayout">
+            <f:SimpleForm id="simpleFormIHumidity" layout="ResponsiveGridLayout" >
 
                 <f:toolbar>
                   <Toolbar id="TBHumidity">
@@ -110,13 +110,15 @@
               </f:toolbar>             
               <HBox id="idHumidityHBOX"  alignItems="Center" justifyContent="Center" fitContainer="true" >
                <VBox id="VBoxHumidity" alignItems="Center" justifyContent="Center" fitContainer="true">
-                    <FlexBox id="flexBoxId3" wrap="NoWrap" fitContainer="true" alignContent="Center" >
+                    <FlexBox id="flexBoxId3" wrap="NoWrap" fitContainer="true" alignContent="Center" class="sapUiMediumMarginEnd" >
                       
                         <Label id="labelHumidity" text="{i18n>Humidity}" />
                         <Input id="inputHumidity" type="Number" value="{Classification>/humidity}" editable="true" />
 
-                        <Label id="labelResultHumidity" text="Resultado Umidade" visible="false" />
-                        <Input id="inputResultHumidity" type="Number" value="{Classification>/resultHumidity}" visible="false" editable="true" />
+                        <HBox id="spacerHumidity" class="sapUiSmallMarginEnd"> 
+                          <Label id="labelResultHumidity" text="Resultado Umidade" visible="false" />
+                          <Input id="inputResultHumidity" type="Number" value="{Classification>/resultHumidity}" visible="false" editable="true" />
+                        </HBox>
 
                         <Label id="labelDiscountHumidity" text="{i18n>DiscountHumidity}" />
                         <Input id="inputDiscountHumidity" type="Number" value="{Classification>/discountHumidity}" editable="true" />
@@ -143,13 +145,15 @@
               
               <HBox id="idimpurityHBOX"  alignItems="Center" justifyContent="Start" fitContainer="true">
                <VBox id="VBoximpurity" alignItems="Center" justifyContent="Start" fitContainer="true">
-                    <FlexBox id="flexBoxId4" wrap="NoWrap" fitContainer="true" >
+                    <FlexBox id="flexBoxId4" wrap="NoWrap" fitContainer="true" class="sapUiMediumMarginEnd" >
                       
                         <Label id="labelImpurity" text="{i18n>Impurity}" />
                         <Input id="inputImpurity" type="Number" value="{Classification>/impurity}" editable="true" />
-
-                        <Label id="labelResultImpurity" text="Resultado Impureza"  visible="false"/>
-                        <Input id="inputResultImpurity" type="Number" value="{Classification>/resultImpurity}" visible="false" editable="true" />
+                        
+                        <HBox id="spacerImpurity" class="sapUiSmallMarginEnd"> 
+                          <Label id="labelResultImpurity" text="Resultado Impureza"  visible="false"/>
+                          <Input id="inputResultImpurity" type="Number" value="{Classification>/resultImpurity}" visible="false" editable="true" />
+                        </HBox>
 
                         <Label id="labelDiscountImpurity" text="{i18n>DiscountImpurity}" />
                         <Input id="inputDiscountImpurity" value="{Classification>/discountImpurity}" editable="true" />
@@ -172,14 +176,16 @@
               </f:toolbar>              
               <HBox id="idDamagedHBOX"  alignItems="Center" justifyContent="Start" fitContainer="true">
                <VBox id="VBoxdamaged" alignItems="Center" justifyContent="Start" fitContainer="true">
-                    <FlexBox id="flexBoxId6" wrap="NoWrap" fitContainer="true" >
+                    <FlexBox id="flexBoxId6" wrap="NoWrap" fitContainer="true" class="sapUiMediumMarginEnd" >
                       
                         <Label id="labelDamaged" text="{i18n>damaged%}" />                      
                         <Input id="inputDamaged" type="Number" value="{Classification>/damaged}" editable="true" />
                       
 
-                      <Label id="labelResultDamaged" text="Resultado Avariado"  visible="false" />
-                      <Input id="inputResultDamaged" type="Number" value="{Classification>/resultDamaged}" editable="true" visible="false"/>
+                        <HBox id="spacerDamaged" class="sapUiSmallMarginEnd"> 
+                          <Label id="labelResultDamaged" text="Resultado Avariado"  visible="false" />
+                          <Input id="inputResultDamaged" type="Number" value="{Classification>/resultDamaged}" editable="true" visible="false"/>
+                        </HBox>
 
                       
                       <Label id="labelDiscountDamaged" text="{i18n>Discountdamaged}" />
@@ -199,21 +205,22 @@
                               
                 </Toolbar>
               </f:toolbar>
-                <FlexBox id="flexBoxIdgreenish" wrap="NoWrap" fitContainer="true" >
-              <VBox id="VBoxgreenish">
-                <FlexBox id="flexBoxId5" wrap="NoWrap" fitContainer="true" >
+                <FlexBox id="flexBoxIdgreenish" wrap="NoWrap" fitContainer="true" class="sapUiMediumMarginEnd" >
+                  <VBox id="VBoxgreenish" alignItems="Center" justifyContent="Start" fitContainer="true">
+                    <FlexBox id="flexBoxId5" wrap="NoWrap" fitContainer="true" >
+                    <Label id="labelGreenish" text="{i18n>greenish%}" />
+                      <Input id="inputGreenish" type="Number" value="{Classification>/greenish}" editable="true" />
 
-                <Label id="labelGreenish" text="{i18n>greenish%}" />
-                  <Input id="inputGreenish" type="Number" value="{Classification>/greenish}" editable="true" />
+                        <HBox id="spacerGreenish" class="sapUiSmallMarginEnd"> 
+                          <Label id="labelResultGreenish" text="Resultado Esverdeado"  visible="false" />
+                          <Input id="inputResultGreenish" type="Number" value="{Classification>/resultGreenish}" visible="false" editable="true" />
+                        </HBox>
 
-                  <Label id="labelResultGreenish" text="Resultado Esverdeado"  visible="false" />
-                  <Input id="inputResultGreenish" type="Number" value="{Classification>/resultGreenish}" visible="false" editable="true" />
-
-                  <Label id="labelDiscountGreenish" text="{i18n>Discountgreenish}" />
-                  <Input id="inputDiscountGreenish" type="Number" value="{Classification>/discountGreenish}" editable="true" />
-                </FlexBox> 
-              
-              </VBox>
+                      <Label id="labelDiscountGreenish" text="{i18n>Discountgreenish}" />
+                      <Input id="inputDiscountGreenish" type="Number" value="{Classification>/discountGreenish}" editable="true" />
+                    </FlexBox> 
+                  
+                  </VBox>
 
               </FlexBox> 
               </f:SimpleForm>
